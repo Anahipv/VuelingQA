@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "1633f932-df66-476b-8b11-8ff497a3e73b",
+		"name": "clase 25/05",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27575703"
+	},
+	"item": [
+		{
+			"name": "api usuarios",
+			"item": [
+				{
+					"name": "get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}//{{url_base}}/{{endpoint}}/",
+							"host": [
+								"{{inicio_url}}"
+							],
+							"path": [
+								"",
+								"{{url_base}}",
+								"{{endpoint}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": 15,\r\n        \"name\": \"poppy rose\",\r\n        \"year\": 1994,\r\n        \"color\": \"#C74375\",\r\n        \"pantone_value\": \"17-2048\"\r\n    },\r\n    \"support\": {\r\n        \"url\": \"https://reqres.in/#support-heading\",\r\n        \"text\": \"To keep ReqRes free, contributions towards server costs are appreciated!\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inicio_url}}//{{url_base}}/{{endpoint}}/2",
+							"host": [
+								"{{inicio_url}}"
+							],
+							"path": [
+								"",
+								"{{url_base}}",
+								"{{endpoint}}",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": 15,\r\n        \"name\": \"poppy rose\",\r\n        \"year\": 1994,\r\n        \"color\": \"#C74375\",\r\n        \"pantone_value\": \"17-2048\"\r\n    },\r\n    \"support\": {\r\n        \"url\": \"https://reqres.in/#support-heading\",\r\n        \"text\": \"To keep ReqRes free, contributions towards server costs are appreciated!\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inicio_url}}//{{url_base}}/{{endpoint}}/",
+							"host": [
+								"{{inicio_url}}"
+							],
+							"path": [
+								"",
+								"{{url_base}}",
+								"{{endpoint}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "creacion de usuario correcta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}//{{url_base}}/{{endpoint}}/15",
+							"host": [
+								"{{inicio_url}}"
+							],
+							"path": [
+								"",
+								"{{url_base}}",
+								"{{endpoint}}",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "api pokemon",
+			"item": [
+				{
+					"name": "get pokemons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}{{base_url}}/{{endpoint_pokemon}}/",
+							"host": [
+								"{{inicio_url}}{{base_url}}"
+							],
+							"path": [
+								"{{endpoint_pokemon}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pokemon by nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}{{base_url}}/{{endpoint_pokemon}}/eevee",
+							"host": [
+								"{{inicio_url}}{{base_url}}"
+							],
+							"path": [
+								"{{endpoint_pokemon}}",
+								"eevee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pokemon by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*let body_response = pm.response.json()\r",
+									"\r",
+									"console.log(body_response)\r",
+									"\r",
+									"pm.test(\"pokemon correcto devuelto\", function(){\r",
+									"    pm.expect(body_response.forms[0].name).to.equal(\"eevee\")\r",
+									"})*/\r",
+									"\r",
+									"let body_response = JSON.parse(responseBody)\r",
+									"\r",
+									"let name = body_response.forms[0].name\r",
+									"\r",
+									"\r",
+									"pm.test(\"pokemon correcto devuelto\", function(){\r",
+									"    pm.expect(name).to.equal(\"eevee\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}{{base_url}}/{{endpoint_pokemon}}/133",
+							"host": [
+								"{{inicio_url}}{{base_url}}"
+							],
+							"path": [
+								"{{endpoint_pokemon}}",
+								"133"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"validateOK200 = function (pm) ",
+					"{ pm.test(\"Status code is 200\", function () ",
+					"    { pm.response.to.have.status(200); }); ",
+					"}"
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,58 @@
+[{
+  "name": "John Doe",
+  "age": 35,
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "state": "WA"
+  },
+  "phoneNumbers": [
+    {
+      "type": "mobile",
+      "number": "555-551-1234"
+    },
+    {
+      "type": "home",
+      "number": "555-552-5678"
+    }
+  ],
+  "email": "john.doe@example.com"
+},{
+  "name": "Peter Doe",
+  "age": 34,
+  "address": {
+    "street": "123 Second St",
+    "city": "RacconCity",
+    "state": "TX"
+  },
+  "phoneNumbers": [
+    {
+      "type": "mobile",
+      "number": "555-553-1234"
+    },
+    {
+      "type": "home",
+      "number": "555-554-5678"
+    }
+  ],
+  "email": "peter.doe@example.com"
+},{
+  "name": "Rick Doe",
+  "age": 36,
+  "address": {
+    "street": "123 Third St",
+    "city": "Springfield",
+    "state": "NJ"
+  },
+  "phoneNumbers": [
+    {
+      "type": "mobile",
+      "number": "555-555-1234"
+    },
+    {
+      "type": "home",
+      "number": "555-556-5678"
+    }
+  ],
+  "email": "rick.doe@example.com"
+}]

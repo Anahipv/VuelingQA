@@ -1,0 +1,544 @@
+{
+	"info": {
+		"_postman_id": "b9ff7130-d730-429e-996b-32ffc327d6aa",
+		"name": "Tarea runner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27575703"
+	},
+	"item": [
+		{
+			"name": "get clients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{clients}}",
+					"host": [
+						"{{base_url}}{{clients}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get supply points",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{supplypoints}}",
+					"host": [
+						"{{base_url}}{{supplypoints}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get client by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)\r",
+							"\r",
+							"let body_response = pm.response.json()\r",
+							"\r",
+							"pm.test(\"It's the correct ID\", function() {\r",
+							"    pm.expect(extractID(body_response)).to.equal(pm.globals.get(\"neighbor1\"))\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{clients}}/{{neighbor1}}",
+					"host": [
+						"{{base_url}}{{clients}}"
+					],
+					"path": [
+						"{{neighbor1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get supply point by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)\r",
+							"\r",
+							"let body_response = pm.response.json()\r",
+							"\r",
+							"pm.test(\"It's the correct ID\", function() {\r",
+							"    pm.expect(extractID(body_response)).to.equal(\"2\")\r",
+							"})\r",
+							"\r",
+							"let neighbor1 = body_response.neighbors[0]\r",
+							"\r",
+							"let neighbor2 = body_response.neighbors[1]\r",
+							"\r",
+							"pm.globals.set(\"neighbor1\", neighbor1)\r",
+							"pm.globals.set(\"neighbor2\", neighbor2)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{supplypoints}}/2",
+					"host": [
+						"{{base_url}}{{supplypoints}}"
+					],
+					"path": [
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post new client",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)\r",
+							"\r",
+							"let body_response = pm.response.json()\r",
+							"\r",
+							"pm.globals.set(\"id_new_client\", body_response.id)\r",
+							"pm.globals.set(\"name_new_client\", body_response.full_name)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": \"Potato street 15\",\r\n    \"building_type\": \"house\",\r\n    \"full_name\": \"Test Postman\",\r\n    \"id\": \"7\",\r\n    \"role\": \"customer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}{{clients}}",
+					"host": [
+						"{{base_url}}{{clients}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check the new client exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)\r",
+							"\r",
+							"let body_response = pm.response.json()\r",
+							"\r",
+							"pm.test(\"It's the correct ID\", function() {\r",
+							"    pm.expect(extractID(body_response)).to.equal(pm.globals.get(\"id_new_client\"))\r",
+							"})\r",
+							"\r",
+							"pm.test(\"It's the correct name\", function() {\r",
+							"    pm.expect(extractName(body_response)).to.equal(pm.globals.get(\"name_new_client\"))\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{clients}}/{{id_new_client}}",
+					"host": [
+						"{{base_url}}{{clients}}"
+					],
+					"path": [
+						"{{id_new_client}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post new client 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)\r",
+							"\r",
+							"let body_response = pm.response.json()\r",
+							"\r",
+							"pm.globals.set(\"id_new_client_2\", body_response.id)\r",
+							"pm.globals.set(\"name_new_client_2\", body_response.full_name)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": \"Potato street 15\",\r\n    \"building_type\": \"house\",\r\n    \"full_name\": \"Test Postman2\",\r\n    \"id\": \"15\",\r\n    \"role\": \"customer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}{{clients}}",
+					"host": [
+						"{{base_url}}{{clients}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create supply point for new client",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"{{id_new_client_2}}\",\r\n    \"tariff\":\"Three prices\",\r\n    \"invoiced_amount\":\"150.00\",\r\n    \"power\":{\"p1\":\"6700\",\"p2\":\"4700\"},\r\n    \"neighbors\":[\"7\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}{{supplypoints}}",
+					"host": [
+						"{{base_url}}{{supplypoints}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check the new client exist 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)\r",
+							"\r",
+							"let body_response = pm.response.json()\r",
+							"\r",
+							"pm.test(\"It's the correct ID\", function() {\r",
+							"    pm.expect(extractID(body_response)).to.equal(pm.globals.get(\"id_new_client_2\"))\r",
+							"})\r",
+							"\r",
+							"pm.test(\"It's the correct name\", function() {\r",
+							"    pm.expect(extractName(body_response)).to.equal(pm.globals.get(\"name_new_client_2\"))\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{clients}}/{{id_new_client_2}}",
+					"host": [
+						"{{base_url}}{{clients}}"
+					],
+					"path": [
+						"{{id_new_client_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit client by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)\r",
+							"\r",
+							"let body_response = pm.response.json()\r",
+							"\r",
+							"pm.test(\"The name was edited\", function() {\r",
+							"    pm.expect(extractName(body_response.full_name)).to.not.equal(pm.globals.get(\"name_new_client\"))\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": \"Potato street 15\",\r\n    \"building_type\": \"house\",\r\n    \"full_name\": \"Test Postman Edit\",\r\n    \"id\": \"7\",\r\n    \"role\": \"customer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}{{clients}}/{{id_new_client}}",
+					"host": [
+						"{{base_url}}{{clients}}"
+					],
+					"path": [
+						"{{id_new_client}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete client by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)\r",
+							"\r",
+							"let body_response = pm.response.json()\r",
+							"\r",
+							"pm.test(\"the length is diferent\", function() {\r",
+							"    pm.expect(pm.globals.get(\"length_before_delete\")).to.not.equal(body_response.length)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let URL = pm.collectionVariables.get(\"base_url\") + pm.collectionVariables.get(\"clients\")\r",
+							"\r",
+							"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+							"    if (err) {\r",
+							"        console.log(err)\r",
+							"    }\r",
+							"    else {\r",
+							"        body = resp.json()\r",
+							"        pm.globals.set(\"length_before_delete\", body.length)\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{clients}}/{{id_new_client_2}}",
+					"host": [
+						"{{base_url}}{{clients}}"
+					],
+					"path": [
+						"{{id_new_client_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check client's supply point delete ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate404NotFound(pm)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{supplypoints}}/15",
+					"host": [
+						"{{base_url}}{{supplypoints}}"
+					],
+					"path": [
+						"15"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"validate200OK = function (pm) {",
+					"    pm.test(\"Status code is 200\", function () {",
+					"        pm.response.to.have.status(200);",
+					"    });",
+					"}",
+					"",
+					"validate404NotFound = function (pm) {",
+					"    pm.test(\"Status code is 404\", function () {",
+					"        pm.response.to.have.status(404);",
+					"    });",
+					"}",
+					"",
+					"validateBodyExist = function (pm) {",
+					"    pm.test(\"Response has a body\", function () {",
+					"        pm.response.to.be.withBody",
+					"    })",
+					"}",
+					"",
+					"validateIsAJson = function (pm) {",
+					"    pm.test(\"Response is a Json\", function () {",
+					"        pm.response.to.be.json",
+					"    })",
+					"}",
+					"",
+					"extractID = function (body_response) {",
+					"    id = body_response.id",
+					"    return id",
+					"}",
+					"",
+					"extractName = function(body_response) {",
+					"    name = body_response.full_name",
+					"    return name",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:5000/",
+			"type": "string"
+		},
+		{
+			"key": "supplypoints",
+			"value": "supplypoints",
+			"type": "string"
+		},
+		{
+			"key": "clients",
+			"value": "clients",
+			"type": "string"
+		}
+	]
+}

@@ -166,7 +166,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"address\": \"Potato street 15\",\r\n    \"building_type\": \"house\",\r\n    \"full_name\": \"Test Postman\",\r\n    \"id\": \"7\",\r\n    \"role\": \"customer\"\r\n}",
+					"raw": "{{client_1}}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -247,7 +247,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"address\": \"Potato street 15\",\r\n    \"building_type\": \"house\",\r\n    \"full_name\": \"Test Postman2\",\r\n    \"id\": \"15\",\r\n    \"role\": \"customer\"\r\n}",
+					"raw": "{{client_2}}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -540,6 +540,16 @@
 		{
 			"key": "clients",
 			"value": "clients",
+			"type": "string"
+		},
+		{
+			"key": "client_1",
+			"value": "{\n    \"address\": \"Potato street 15\",\n    \"building_type\": \"house\",\n    \"full_name\": \"Test Postman\",\n    \"id\": \"7\",\n    \"role\": \"customer\"\n}",
+			"type": "string"
+		},
+		{
+			"key": "client_2",
+			"value": "{\n    \"address\": \"Potato street 15\",\n    \"building_type\": \"house\",\n    \"full_name\": \"Test Postman2\",\n    \"id\": \"15\",\n    \"role\": \"customer\"\n}",
 			"type": "string"
 		}
 	]

@@ -61,42 +61,6 @@
 			"response": []
 		},
 		{
-			"name": "get client by id",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"validate200OK(pm)\r",
-							"validateBodyExist(pm)\r",
-							"validateIsAJson(pm)\r",
-							"\r",
-							"let body_response = pm.response.json()\r",
-							"\r",
-							"pm.test(\"It's the correct ID\", function() {\r",
-							"    pm.expect(extractID(body_response)).to.equal(pm.globals.get(\"neighbor1\"))\r",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}{{clients}}/{{neighbor1}}",
-					"host": [
-						"{{base_url}}{{clients}}"
-					],
-					"path": [
-						"{{neighbor1}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "get supply point by id",
 			"event": [
 				{
@@ -134,6 +98,44 @@
 					],
 					"path": [
 						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get client by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"validate200OK(pm)\r",
+							"validateBodyExist(pm)\r",
+							"validateIsAJson(pm)\r",
+							"\r",
+							"let body_response = pm.response.json()\r",
+							"\r",
+							"pm.test(\"It's the correct ID\", function() {\r",
+							"    let response_id = parseInt(extractID(body_response))\r",
+							"    let neighbor1_id = parseInt(pm.globals.get(\"neighbor1\"))\r",
+							"    pm.expect(response_id).to.equal(neighbor1_id)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}{{clients}}/{{neighbor1}}",
+					"host": [
+						"{{base_url}}{{clients}}"
+					],
+					"path": [
+						"{{neighbor1}}"
 					]
 				}
 			},
@@ -389,7 +391,7 @@
 			"response": []
 		},
 		{
-			"name": "delete client by id",
+			"name": "delete client 2 by id",
 			"event": [
 				{
 					"listen": "test",

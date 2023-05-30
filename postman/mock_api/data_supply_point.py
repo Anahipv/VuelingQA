@@ -42,7 +42,3 @@ data_supply_points = [
             "neighbors":["5"]
         }
         ]
-
-from functions import find_index_client_by_id
-
-print(find_index_client_by_id("3", data_supply_points))

@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, abort
 from flask_cors import CORS
 from data_clients import data_clients
 from data_supply_point import data_supply_points
-from functions import find_index_client_by_id, find_index_client_by_name
+from functions import find_index_client_by_id, find_index_client_by_name, id_exist
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -19,19 +19,19 @@ def get_client_by_id(id):
     data_dict = data_clients
     index = find_index_client_by_id(id, data_dict)
     if index == None:
-        abort(404)
+        abort(404, description="It's a incorrect ID")
     client = data_dict[index]
     resp = jsonify(client)
     return resp
 
-"""@app.route("/clients/<full_name>", methods = ["GET"])
-def get_client_by_name(full_name):
+@app.route("/clients/", methods = ["GET"])
+def get_client_by_name():
     data_dict = data_clients
-    name = full_name.replace("%20", " ")
+    name = request.args.get("name")
     index = find_index_client_by_name(name, data_dict)
     client = data_dict[index]
     resp = jsonify(client)
-    return resp"""
+    return resp
 
 @app.route("/clients", methods = ["POST"])
 def create_client():
@@ -47,6 +47,8 @@ def create_client():
             "role":role,
             "building_type":building_type
         }
+    if not id_exist(id, data_clients):
+        abort(400, description="The ID already exist")
     data_clients.append(new_client)
     resp = jsonify(new_client)
     return resp
@@ -67,7 +69,7 @@ def update_client(id):
         }
     index = find_index_client_by_id(id, data_clients)
     if index == None:
-        abort(404)
+        abort(404, description="It's a incorrect ID")
     data_clients[index] = edit_client
     resp = jsonify(data_clients[index])
     return resp
@@ -76,7 +78,7 @@ def update_client(id):
 def delete_client(id):
     index = find_index_client_by_id(id, data_clients)
     if index == None:
-        abort(404)
+        abort(404, description="It's a incorrect ID")
     data_clients.pop(index)
     index = find_index_client_by_id(id, data_supply_points)
     try:
@@ -97,7 +99,7 @@ def get_supply_point(id):
     data_dict = data_supply_points
     index = find_index_client_by_id(id, data_dict)
     if index == None:
-        abort(404)
+        abort(404, description="It's a incorrect ID")
     supply_point = data_dict[index]
     resp = jsonify(supply_point)
     return resp
@@ -116,6 +118,10 @@ def create_supply_point():
             "power":power,
             "neighbors":neighbors
         }
+    if not id_exist(id, data_clients):
+        abort(400, description="It is not a valid ID")
+    elif id_exist(id, data_supply_points):
+        abort(400, description="The ID already exist")
     data_clients.append(new_supply_point)
     resp = jsonify(new_supply_point)
     return resp
@@ -136,7 +142,7 @@ def update_supply_points(id):
         }
     index = find_index_client_by_id(id, data_supply_points)
     if index == None:
-        abort(404)
+        abort(404, description="It's a incorrect ID")
     data_clients[index] = edit_supply_point
     resp = jsonify(data_clients[index])
     return resp
@@ -145,7 +151,7 @@ def update_supply_points(id):
 def delete_supply_points(id):
     index = find_index_client_by_id(id, data_clients)
     if index == None:
-        abort(404)
+        abort(404, description="It's a incorrect ID")
     data_clients.pop(index)
     resp = jsonify(data_clients)
     return resp

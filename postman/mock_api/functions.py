@@ -10,3 +10,9 @@ def find_index_client_by_name(name, obj):
         if name == obj[i]["full_name"]:
             return i
     return None
+
+def id_exist(id, obj):
+    for i in range(len(obj)):
+        if id == obj[i]["id"]:
+            return True
+    return False

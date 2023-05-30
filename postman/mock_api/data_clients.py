@@ -36,13 +36,19 @@ data_clients = [
         },
         {
             "full_name":"Steven Walters",
-            "address":"Swede street, 7",
+            "address":"Swede street 7",
             "id":"6",
+            "role":"customer",
+            "building_type":"house"
+        },
+        {
+            "full_name":"Steven Horton",
+            "address":"Sweet potato street 2",
+            "id":"10",
             "role":"customer",
             "building_type":"house"
         }
         ]
 
-from functions import find_index_client_by_name
 
-print(find_index_client_by_name("Steven Walters", data_clients))
+

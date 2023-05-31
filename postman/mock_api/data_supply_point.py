@@ -3,8 +3,8 @@ data_supply_points = [
             "id": "1",
             "tariff":"One price",
             "invoiced_amount":"50.00",
-            "power":{"p1":"94500","p2":"94200"},
-            "neighbors":["2","3"]
+            "power":{"p1":"9500","p2":"9200"},
+            "neighbors":["2","6"]
         },
         {
             "id":"2",
@@ -18,21 +18,21 @@ data_supply_points = [
             "tariff":"One price",
             "invoiced_amount":"40.00",
             "power":{"p1":"5500","p2":"5800"},
-            "neighbors":["2","1"]
+            "neighbors":["2","4"]
         },
         {
             "id":"4",
             "tariff":"One price",
             "invoiced_amount":"68.00",
             "power":{"p1":"4200","p2":"4200"},
-            "neighbors":[]
+            "neighbors":["3","5"]
         },
         {
             "id":"5",
             "tariff":"One price",
             "invoiced_amount":"200.00",
             "power":{"p1":"6200","p2":"6000"},
-            "neighbors":["6"]
+            "neighbors":["4","6"]
         },
         {
             "id":"6",

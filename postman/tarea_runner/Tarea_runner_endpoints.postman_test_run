@@ -1,0 +1,678 @@
+{
+	"id": "27b1f372-d5dd-4055-bc55-2c66ed983193",
+	"name": "Tarea runner",
+	"timestamp": "2023-05-31T14:38:49.442Z",
+	"collection_id": "27575703-b9ff7130-d730-429e-996b-32ffc327d6aa",
+	"folder_id": "27575703-51d8268e-6b2c-497b-9c23-c1f4fecc74b1",
+	"environment_id": "0",
+	"totalPass": 51,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-05-31T14:38:48.219Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "8aa02c3a-ca4b-460c-bb67-4d8da1c9800a",
+			"name": "get clients",
+			"url": "http://127.0.0.1:5000/clients",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "768d3bb3-7176-4d57-aecc-2ef7b82efb1c",
+			"name": "get client by id",
+			"url": "http://127.0.0.1:5000/clients/1",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct ID": true
+				}
+			]
+		},
+		{
+			"id": "8dc74c16-9d45-4d21-b87b-e1ae7c6fa17c",
+			"name": "get client by name",
+			"url": "http://127.0.0.1:5000/clients/?name=Terry Evans",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct ID": true
+				}
+			]
+		},
+		{
+			"id": "5e5afcdd-d216-4c06-b916-ab85535d022c",
+			"name": "post new client",
+			"url": "http://127.0.0.1:5000/clients",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "38282620-a230-4b75-90c3-098e84ddb407",
+			"name": "edit client by id",
+			"url": "http://127.0.0.1:5000/clients/7",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"The name was edited": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The name was edited": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"The name was edited": true
+				}
+			]
+		},
+		{
+			"id": "3d855445-9e60-40ef-8cee-2b5131b5a763",
+			"name": "delete client by id",
+			"url": "http://127.0.0.1:5000/clients/7",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"the length is diferent": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"the length is diferent": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"the length is diferent": true
+				}
+			]
+		},
+		{
+			"id": "cbce8a17-55b8-4c2b-bc7d-a63e4d980977",
+			"name": "get supply points",
+			"url": "http://127.0.0.1:5000/supplypoints",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "4a8dbecf-5200-4400-891e-94d3d8617a38",
+			"name": "get supply point by id",
+			"url": "http://127.0.0.1:5000/supplypoints/2",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct ID": true
+				}
+			]
+		},
+		{
+			"id": "03a6a3a6-2f68-4e05-9df8-56bdced1ac21",
+			"name": "create supply point",
+			"url": "http://127.0.0.1:5000/supplypoints",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "86c3e8cb-c591-483c-9aa1-7ae103aeff4e",
+			"name": "edit supply point by id",
+			"url": "http://127.0.0.1:5000/supplypoints/10",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"The invoiced_amount was edited": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The invoiced_amount was edited": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"The invoiced_amount was edited": true
+				}
+			]
+		},
+		{
+			"id": "e0810578-8fdc-411b-a7fb-caf38998b09c",
+			"name": "delete supply point by id",
+			"url": "http://127.0.0.1:5000/supplypoints/10",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"the length is diferent": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"the length is diferent": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"the length is diferent": true
+				}
+			]
+		},
+		{
+			"id": "3933e5b3-5be7-4a36-9972-e0d6fa4c8cb4",
+			"name": "get discount",
+			"url": "http://127.0.0.1:5000/discounts",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "3675ba19-0cda-4ed8-aa4b-c1372ec13c00",
+			"name": "get discount by id",
+			"url": "http://127.0.0.1:5000/discounts/2",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct ID": true
+				}
+			]
+		},
+		{
+			"id": "4e8c7485-fcfb-48fd-86f1-3a34f33fc684",
+			"name": "get client discount",
+			"url": "http://127.0.0.1:5000/discounts/?client_id=4",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct discount": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct discount": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct discount": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 67,
+	"collection": {
+		"requests": [
+			{
+				"id": "8aa02c3a-ca4b-460c-bb67-4d8da1c9800a",
+				"method": "GET"
+			},
+			{
+				"id": "768d3bb3-7176-4d57-aecc-2ef7b82efb1c",
+				"method": "GET"
+			},
+			{
+				"id": "8dc74c16-9d45-4d21-b87b-e1ae7c6fa17c",
+				"method": "GET"
+			},
+			{
+				"id": "5e5afcdd-d216-4c06-b916-ab85535d022c",
+				"method": "POST"
+			},
+			{
+				"id": "38282620-a230-4b75-90c3-098e84ddb407",
+				"method": "PUT"
+			},
+			{
+				"id": "3d855445-9e60-40ef-8cee-2b5131b5a763",
+				"method": "DELETE"
+			},
+			{
+				"id": "cbce8a17-55b8-4c2b-bc7d-a63e4d980977",
+				"method": "GET"
+			},
+			{
+				"id": "4a8dbecf-5200-4400-891e-94d3d8617a38",
+				"method": "GET"
+			},
+			{
+				"id": "03a6a3a6-2f68-4e05-9df8-56bdced1ac21",
+				"method": "POST"
+			},
+			{
+				"id": "86c3e8cb-c591-483c-9aa1-7ae103aeff4e",
+				"method": "PUT"
+			},
+			{
+				"id": "e0810578-8fdc-411b-a7fb-caf38998b09c",
+				"method": "DELETE"
+			},
+			{
+				"id": "3933e5b3-5be7-4a36-9972-e0d6fa4c8cb4",
+				"method": "GET"
+			},
+			{
+				"id": "3675ba19-0cda-4ed8-aa4b-c1372ec13c00",
+				"method": "GET"
+			},
+			{
+				"id": "4e8c7485-fcfb-48fd-86f1-3a34f33fc684",
+				"method": "GET"
+			}
+		]
+	}
+}

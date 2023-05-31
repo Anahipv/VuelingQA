@@ -16,3 +16,10 @@ def id_exist(id, obj):
         if id == obj[i]["id"]:
             return True
     return False
+
+def find_client_discount(id, obj):
+    for i in range(len(obj)):
+        for j in range(len(obj[i]["clients"])):
+            if id == obj[i]["clients"][j]:
+                return obj[i]["discount"]
+    return None

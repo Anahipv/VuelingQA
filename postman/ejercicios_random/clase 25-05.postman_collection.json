@@ -1,0 +1,632 @@
+{
+	"info": {
+		"_postman_id": "1633f932-df66-476b-8b11-8ff497a3e73b",
+		"name": "clase 25/05",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27575703"
+	},
+	"item": [
+		{
+			"name": "api usuarios",
+			"item": [
+				{
+					"name": "get users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}//{{url_base}}/{{endpoint}}/",
+							"host": [
+								"{{inicio_url}}"
+							],
+							"path": [
+								"",
+								"{{url_base}}",
+								"{{endpoint}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm)\r",
+									"\r",
+									"pm.test(\"Name User is correct\", validateName(pm, \"fuchsia rose\"))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}//{{url_base}}/{{endpoint}}/2",
+							"host": [
+								"{{inicio_url}}"
+							],
+							"path": [
+								"",
+								"{{url_base}}",
+								"{{endpoint}}",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK201(pm)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": 15,\r\n        \"name\": \"red rose\",\r\n        \"year\": 1994,\r\n        \"color\": \"#C74375\",\r\n        \"pantone_value\": \"17-2048\"\r\n    },\r\n    \"support\": {\r\n        \"url\": \"https://reqres.in/#support-heading\",\r\n        \"text\": \"To keep ReqRes free, contributions towards server costs are appreciated!\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inicio_url}}//{{url_base}}/{{endpoint}}/",
+							"host": [
+								"{{inicio_url}}"
+							],
+							"path": [
+								"",
+								"{{url_base}}",
+								"{{endpoint}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "creacion de usuario correcta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}//{{url_base}}/{{endpoint}}/15",
+							"host": [
+								"{{inicio_url}}"
+							],
+							"path": [
+								"",
+								"{{url_base}}",
+								"{{endpoint}}",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"validateOK200 = function (pm) {",
+							"        pm.test(\"Status code is 200\", function () {",
+							"            pm.response.to.have.status(200);",
+							"        });",
+							"    }",
+							"",
+							"validateOK201 = function (pm) {",
+							"        pm.test(\"Status code is 201\", function () {",
+							"            pm.response.to.have.status(201);",
+							"        });",
+							"    }",
+							"",
+							"validateName = function (pm, name) {",
+							"    let bodyResponse = pm.response.json()",
+							"",
+							"    let nameResponse = bodyResponse.data.name",
+							"",
+							"    pm.expect(nameResponse).to.equal(name)",
+							"}"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "api pokemon",
+			"item": [
+				{
+					"name": "get pokemons",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}{{base_url}}/{{endpoint_pokemon}}/",
+							"host": [
+								"{{inicio_url}}{{base_url}}"
+							],
+							"path": [
+								"{{endpoint_pokemon}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pokemon by name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm)\r",
+									"\r",
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"pm.test(\"it's the correct pokemon\", function(){\r",
+									"    let id = getByID(body_response)\r",
+									"    console.log(id)\r",
+									"    pm.expect(id).to.equal(133)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}{{base_url}}/{{endpoint_pokemon}}/eevee",
+							"host": [
+								"{{inicio_url}}{{base_url}}"
+							],
+							"path": [
+								"{{endpoint_pokemon}}",
+								"eevee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pokemon by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm)\r",
+									"\r",
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"pm.test(\"it's the correct pokemon\", function(){\r",
+									"    let name = getByName(body_response)\r",
+									"    pm.expect(name).to.equal(\"eevee\")\r",
+									"})\r",
+									"\r",
+									"let name_ability_incorrect = \"imposter\"\r",
+									"\r",
+									"pm.test(\"this ability doesn't exist in this pokemon\", function(){\r",
+									"    let ability_exist = thisAbilityExist(body_response, name_ability_incorrect)\r",
+									"    pm.expect(ability_exist).to.not.equal(true)\r",
+									"})\r",
+									"\r",
+									"let name_ability = \"run-away\"\r",
+									"\r",
+									"pm.test(\"this ability exist in this pokemon\", function(){\r",
+									"    let ability_exist = thisAbilityExist(body_response, name_ability)\r",
+									"    pm.expect(ability_exist).to.equal(true)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}{{base_url}}/{{endpoint_pokemon}}/133",
+							"host": [
+								"{{inicio_url}}{{base_url}}"
+							],
+							"path": [
+								"{{endpoint_pokemon}}",
+								"133"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get move by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm)\r",
+									"\r",
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"pm.test(\"move name ok\", function(){\r",
+									"    let nameMove = getMoveName(body_response)\r",
+									"    pm.expect(nameMove).to.equal(\"mega-punch\")})\r",
+									"\r",
+									"pm.test(\"move type ok\", function(){\r",
+									"    let moveType = getMoveType(body_response)\r",
+									"    pm.expect(moveType).to.equal(\"normal\")})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}{{base_url}}/move/5/",
+							"host": [
+								"{{inicio_url}}{{base_url}}"
+							],
+							"path": [
+								"move",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ditto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm)\r",
+									"\r",
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"let name_ability = \"imposter\"\r",
+									"\r",
+									"pm.test(\"this ability exist in this pokemon\", function(){\r",
+									"    let ability_exist = thisAbilityExist(body_response, name_ability)\r",
+									"    pm.expect(ability_exist).to.equal(true)\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}{{base_url}}/{{endpoint_pokemon}}/ditto",
+							"host": [
+								"{{inicio_url}}{{base_url}}"
+							],
+							"path": [
+								"{{endpoint_pokemon}}",
+								"ditto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get eevee moves",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm)\r",
+									"\r",
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"pm.test(\"moves length ok\", function(){\r",
+									"    pm.expect(movesLength(body_response)).to.equal(72)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"moves is greater than 50\", function(){\r",
+									"    pm.expect(movesLength(body_response)).greaterThan(50)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"moves is less than 100\", function(){\r",
+									"    pm.expect(movesLength(body_response)).lessThan(100)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"moves is not greater than 75\", function(){\r",
+									"    pm.expect(movesLength(body_response)).not.greaterThan(75)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}{{base_url}}/{{endpoint_pokemon}}/eevee",
+							"host": [
+								"{{inicio_url}}{{base_url}}"
+							],
+							"path": [
+								"{{endpoint_pokemon}}",
+								"eevee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get type",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//pm.sendRequest({ method: 'GET', url: \"https://pokeapi.co/api/v2/type/1\"})\r",
+									"\r",
+									"/*pm.test(\"All types have at least 50 associated Pokemon\", function () {\r",
+									"\r",
+									"    var jsonData = pm.response();\r",
+									"\r",
+									"    var types = jsonData.results;\r",
+									"\r",
+									"    types.forEach(function (type) {\r",
+									"\r",
+									"        pm.sendRequest({\r",
+									"\r",
+									"            method: 'GET',\r",
+									"\r",
+									"            url: type.url,\r",
+									"\r",
+									"            async: false\r",
+									"\r",
+									"        }, function (response) {\r",
+									"\r",
+									"            var pokemonCount = response.json().pokemon.length;\r",
+									"\r",
+									"            pm.expect(pokemonCount).to.be.at.least(50);\r",
+									"\r",
+									"        });\r",
+									"\r",
+									"    });\r",
+									"\r",
+									"});*/\r",
+									"\r",
+									"/*getAllTypes = function (Json) {\r",
+									"    for (let i = 0; i < Json.results.length; i++) {\r",
+									"        let typeURL = pm.environment.get(\"inicio_url\") + pm.environment.get(\"base_url\") + '/type/' + i;\r",
+									"\r",
+									" \r",
+									"\r",
+									"        pm.sendRequest({ method: 'GET', url: typeURL }, function (err, response) {\r",
+									"            if (err) {\r",
+									"                console.error(err);\r",
+									"            } else {\r",
+									"                const responseBody = response.json();\r",
+									"                pm.expect(responseBody.pokemon.length).to.be.greaterThan(50);\r",
+									"            }\r",
+									"        });\r",
+									"    }\r",
+									"}*/\r",
+									"\r",
+									"getPokemonAmountByType = function (response_body) {\r",
+									"\r",
+									"    let atLeast = []\r",
+									"\r",
+									"    for (let i = 1; i < response_body.results.length; i++) {\r",
+									"        let typeURL = pm.environment.get(\"inicio_url\") + pm.environment.get(\"base_url\") + '/type/' + i;\r",
+									"\r",
+									"        pm.sendRequest({ method: 'GET', url: typeURL }, (error, response) => {\r",
+									"            console.log(\"ya hice get\")\r",
+									"            if (error) {\r",
+									"                console.error(error);\r",
+									"            } else {\r",
+									"                const responseBody = response.body.json();\r",
+									"                // pm.environment.set(\"idtype\", responseBody.name)\r",
+									"                console.log(responseBody)\r",
+									"                if (responseBody.pokemon.length >= 50){\r",
+									"                    atLeast.push(true)\r",
+									"                }\r",
+									"                else {\r",
+									"                    atLeast.push(false)\r",
+									"                }\r",
+									"            }\r",
+									"        });\r",
+									"    }\r",
+									"    console.log(\"esto tiene atleast: \" + atLeast)\r",
+									"    return atLeast\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"console.log(body_response)\r",
+									"\r",
+									"pm.test(\"All types have more than 50 pokemons\", function(){\r",
+									"    let pokemonByType = getPokemonAmountByType(body_response).reduce((a,b) => a && b)\r",
+									"    pm.expect(pokemonByType).to.equal(true)\r",
+									"})\r",
+									"\r",
+									"//console.log(pm.environment.get(\"idtype\"))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{inicio_url}}{{base_url}}/type/",
+							"host": [
+								"{{inicio_url}}{{base_url}}"
+							],
+							"path": [
+								"type",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"validateOK200 = function (pm) {",
+							"        pm.test(\"Status code is 200\", function () {",
+							"            pm.response.to.have.status(200);",
+							"        });",
+							"    }",
+							"",
+							"getByName = function(body_response){",
+							"    let name = body_response.forms[0].name",
+							"    return name",
+							"}",
+							"",
+							"getByID = function(body_response){",
+							"    let id = body_response.id",
+							"    return id",
+							"}",
+							"",
+							"getMoveName = function(body_response){",
+							"    let moveName = body_response.name",
+							"    return moveName",
+							"}",
+							"",
+							"getMoveType = function(body_response){",
+							"    let moveType = body_response.type.name",
+							"    return moveType",
+							"}",
+							"",
+							"thisAbilityExist = function(body_response, name_ability){",
+							"    let abilityExist = false",
+							"    for (let i = 0; i < body_response.abilities.length; i++){",
+							"        if (body_response.abilities[i].ability.name == name_ability){",
+							"            abilityExist = true",
+							"        }",
+							"    }",
+							"    return abilityExist",
+							"}",
+							"",
+							"movesLength = function(body_response){",
+							"    let moves = body_response.moves",
+							"    return moves.length",
+							"}",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"validateOK200 = function (pm) ",
+					"{ pm.test(\"Status code is 200\", function () ",
+					"    { pm.response.to.have.status(200); }); ",
+					"}"
+				]
+			}
+		}
+	]
+}

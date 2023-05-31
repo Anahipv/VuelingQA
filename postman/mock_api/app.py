@@ -2,7 +2,8 @@ from flask import Flask, jsonify, request, abort
 from flask_cors import CORS
 from data_clients import data_clients
 from data_supply_point import data_supply_points
-from functions import find_index_client_by_id, find_index_client_by_name, id_exist
+from data_discounts import data_discounts
+from functions import find_index_client_by_id, find_index_client_by_name, id_exist, find_client_discount
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -47,7 +48,7 @@ def create_client():
             "role":role,
             "building_type":building_type
         }
-    if not id_exist(id, data_clients):
+    if id_exist(id, data_clients):
         abort(400, description="The ID already exist")
     data_clients.append(new_client)
     resp = jsonify(new_client)
@@ -122,7 +123,7 @@ def create_supply_point():
         abort(400, description="It is not a valid ID")
     elif id_exist(id, data_supply_points):
         abort(400, description="The ID already exist")
-    data_clients.append(new_supply_point)
+    data_supply_points.append(new_supply_point)
     resp = jsonify(new_supply_point)
     return resp
 
@@ -143,18 +144,58 @@ def update_supply_points(id):
     index = find_index_client_by_id(id, data_supply_points)
     if index == None:
         abort(404, description="It's a incorrect ID")
-    data_clients[index] = edit_supply_point
-    resp = jsonify(data_clients[index])
+    data_supply_points[index] = edit_supply_point
+    resp = jsonify(data_supply_points[index])
     return resp
 
 @app.route("/supplypoints/<id>", methods = ["DELETE"])
 def delete_supply_points(id):
+    index = find_index_client_by_id(id, data_supply_points)
+    if index == None:
+        abort(404, description="It's a incorrect ID")
+    data_supply_points.pop(index)
+    resp = jsonify(data_supply_points)
+    return resp
+
+@app.route("/discounts", methods = ["GET"])
+def get_discounts():
+    data_dict = data_discounts
+    resp = jsonify(data_dict)
+    return resp
+
+@app.route("/discounts/<id>", methods = ["GET"])
+def get_discount(id):
+    data_dict = data_discounts
+    index = find_index_client_by_id(id, data_dict)
+    if index == None:
+        abort(404, description="It's a incorrect ID")
+    supply_point = data_dict[index]
+    resp = jsonify(supply_point)
+    return resp
+
+@app.route("/discounts/", methods = ["GET"])
+def get_discount_for_client():
+    client_id = request.args.get("client_id")
+    discount = find_client_discount(client_id, data_discounts)
+    if discount == None:
+        abort(404, description="It's a incorrect ID")
+    pre_resp = {"type_of_discount":discount}
+    resp = jsonify(pre_resp)
+    return resp
+
+@app.route("/discounts/apply/<id>", methods = ["POST"])
+def apply_discount(id):
+    discount = request.json["discount"]
     index = find_index_client_by_id(id, data_clients)
     if index == None:
         abort(404, description="It's a incorrect ID")
-    data_clients.pop(index)
-    resp = jsonify(data_clients)
+    elif int(discount) < 1 or int(discount) > 3:
+        abort(400, "This discount is incorrect")
+    data_clients[index]["discount_type"] = discount
+    data_discounts[int(discount)-1]["clients"].append(index)
+    resp = jsonify(data_clients[index])
     return resp
+
 
 if __name__ == '__main__':
     app.run(debug=True)

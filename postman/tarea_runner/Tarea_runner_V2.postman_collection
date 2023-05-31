@@ -1,0 +1,2016 @@
+{
+	"info": {
+		"_postman_id": "b9ff7130-d730-429e-996b-32ffc327d6aa",
+		"name": "Tarea runner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27575703"
+	},
+	"item": [
+		{
+			"name": "Regression",
+			"item": [
+				{
+					"name": "TC 0 (create client)",
+					"item": [
+						{
+							"name": "post new client",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_new_client\", extractID(body_response))\r",
+											"pm.collectionVariables.set(\"name_new_client\", extractName(body_response))\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{{client_1}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}clients",
+									"host": [
+										"{{base_url}}clients"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check the new client exist",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct ID\", function() {\r",
+											"    pm.expect(extractID(body_response)).to.equal(pm.collectionVariables.get(\"id_new_client\"))\r",
+											"})\r",
+											"\r",
+											"pm.test(\"It's the correct name\", function() {\r",
+											"    pm.expect(extractName(body_response)).to.equal(pm.collectionVariables.get(\"name_new_client\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}clients/{{id_new_client}}",
+									"host": [
+										"{{base_url}}clients"
+									],
+									"path": [
+										"{{id_new_client}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 1 (edit client)",
+					"item": [
+						{
+							"name": "TC 1.0 (client exist)",
+							"item": [
+								{
+									"name": "get client by id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let body_response = pm.response.json()\r",
+													"\r",
+													"pm.collectionVariables.set(\"name_before_edit\", extractName(body_response))\r",
+													"\r",
+													"// Asserts\r",
+													"\r",
+													"validate200OK(pm)\r",
+													"validateBodyExist(pm)\r",
+													"validateIsAJson(pm)\r",
+													"\r",
+													"pm.test(\"It's the correct ID\", function() {\r",
+													"    let response_id = parseInt(extractID(body_response))\r",
+													"    pm.expect(response_id).to.equal(1)\r",
+													"})\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}clients/1",
+											"host": [
+												"{{base_url}}clients"
+											],
+											"path": [
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "edit client by id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let body_response = pm.response.json()\r",
+													"\r",
+													"let name = extractName(body_response)\r",
+													"\r",
+													"pm.collectionVariables.set(\"name_after_edit\", name)\r",
+													"\r",
+													"// Asserts\r",
+													"\r",
+													"validate200OK(pm)\r",
+													"validateBodyExist(pm)\r",
+													"validateIsAJson(pm)\r",
+													"\r",
+													"pm.test(\"The name was edited\", function() {\r",
+													"    pm.expect(name).to.not.equal(pm.collectionVariables.get(\"name_before_edit\"))\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"address\": \"Potato street 4\",\r\n    \"building_type\": \"house\",\r\n    \"full_name\": \"Test Postman Edit\",\r\n    \"id\": \"1\",\r\n    \"role\": \"customer\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}clients/1",
+											"host": [
+												"{{base_url}}clients"
+											],
+											"path": [
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get client by name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let body_response = pm.response.json()\r",
+													"\r",
+													"// Asserts\r",
+													"\r",
+													"validate200OK(pm)\r",
+													"validateBodyExist(pm)\r",
+													"validateIsAJson(pm)\r",
+													"\r",
+													"pm.test(\"It's the correct ID\", function() {\r",
+													"    pm.expect(extractID(body_response)).to.equal(\"1\")\r",
+													"})\r",
+													"\r",
+													"pm.test(\"It's the correct name\", function() {\r",
+													"    pm.expect(extractName(body_response)).to.equal(pm.collectionVariables.get(\"name_after_edit\"))\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}clients/?name={{name_after_edit}}",
+											"host": [
+												"{{base_url}}clients"
+											],
+											"path": [
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "{{name_after_edit}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "TC 1.1 (client doesn't exist)",
+							"item": [
+								{
+									"name": "client doesn't exist - response 404 Copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"validate404NotFound(pm)"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"address\": \"Potato street 4\",\r\n    \"building_type\": \"house\",\r\n    \"full_name\": \"Test Postman Edit\",\r\n    \"id\": \"20\",\r\n    \"role\": \"customer\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}clients/20",
+											"host": [
+												"{{base_url}}clients"
+											],
+											"path": [
+												"20"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "TC 3 (delete client)",
+					"item": [
+						{
+							"name": "TC 3.0 (delete client, check supply point was removed too)",
+							"item": [
+								{
+									"name": "delete client",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let body_response = pm.response.json()\r",
+													"\r",
+													"// Asserts\r",
+													"\r",
+													"validate200OK(pm)\r",
+													"validateBodyExist(pm)\r",
+													"validateIsAJson(pm)\r",
+													"\r",
+													"pm.test(\"the length is diferent\", function() {\r",
+													"    pm.expect(pm.collectionVariables.get(\"length_before_delete\")).to.not.equal(body_response.length)\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"let URL = pm.collectionVariables.get(\"base_url\") + \"clients\"\r",
+													"\r",
+													"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+													"    if (err) {\r",
+													"        console.log(err)\r",
+													"    }\r",
+													"    else {\r",
+													"        body = resp.json()\r",
+													"        pm.collectionVariables.set(\"length_before_delete\", body.length)\r",
+													"    }\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}clients/2",
+											"host": [
+												"{{base_url}}clients"
+											],
+											"path": [
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "check client doesn't exist Copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"validate404NotFound(pm)"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}clients/2",
+											"host": [
+												"{{base_url}}clients"
+											],
+											"path": [
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "supply point doesn't exist - response 404",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"validate404NotFound(pm)"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}supplypoints/20",
+											"host": [
+												"{{base_url}}supplypoints"
+											],
+											"path": [
+												"20"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "TC 3.1 (client doesn't exist)",
+							"item": [
+								{
+									"name": "client doesn't exist - response 404",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"validate404NotFound(pm)"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}clients/20",
+											"host": [
+												"{{base_url}}clients"
+											],
+											"path": [
+												"20"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "TC 4 (create client + supply point)",
+					"item": [
+						{
+							"name": "post new client 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_new_client_2\", extractID(body_response))\r",
+											"pm.collectionVariables.set(\"name_new_client_2\", extractName(body_response))\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{{client_2}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}clients",
+									"host": [
+										"{{base_url}}clients"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create supply point for new client",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":\"{{id_new_client_2}}\",\r\n    \"tariff\":\"Three prices\",\r\n    \"invoiced_amount\":\"150.00\",\r\n    \"power\":{\"p1\":\"6700\",\"p2\":\"4700\"},\r\n    \"neighbors\":[\"7\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}supplypoints",
+									"host": [
+										"{{base_url}}supplypoints"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check the new client exist 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct ID\", function() {\r",
+											"    pm.expect(extractID(body_response)).to.equal(pm.collectionVariables.get(\"id_new_client_2\"))\r",
+											"})\r",
+											"\r",
+											"pm.test(\"It's the correct name\", function() {\r",
+											"    pm.expect(extractName(body_response)).to.equal(pm.collectionVariables.get(\"name_new_client_2\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}clients/{{id_new_client_2}}",
+									"host": [
+										"{{base_url}}clients"
+									],
+									"path": [
+										"{{id_new_client_2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get supply point by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct ID\", function() {\r",
+											"    pm.expect(extractID(body_response)).to.equal(pm.collectionVariables.get(\"id_new_client_2\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}supplypoints/{{id_new_client_2}}",
+									"host": [
+										"{{base_url}}supplypoints"
+									],
+									"path": [
+										"{{id_new_client_2}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 5 (create supply point)",
+					"item": [
+						{
+							"name": "TC 5.0 (client exist)",
+							"item": [
+								{
+									"name": "create supply point",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let body_response = pm.response.json()\r",
+													"\r",
+													"pm.collectionVariables.set(\"id_new_supply_point\", extractID(body_response))\r",
+													"\r",
+													"// Asserts\r",
+													"\r",
+													"validate200OK(pm)\r",
+													"validateBodyExist(pm)\r",
+													"validateIsAJson(pm)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\":\"10\",\r\n    \"tariff\":\"Three prices\",\r\n    \"invoiced_amount\":\"150.00\",\r\n    \"power\":{\"p1\":\"6700\",\"p2\":\"4700\"},\r\n    \"neighbors\":[\"7\"]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}supplypoints",
+											"host": [
+												"{{base_url}}supplypoints"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get supply point by id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let body_response = pm.response.json()\r",
+													"\r",
+													"// Asserts\r",
+													"\r",
+													"validate200OK(pm)\r",
+													"validateBodyExist(pm)\r",
+													"validateIsAJson(pm)\r",
+													"\r",
+													"pm.test(\"It's the correct ID\", function() {\r",
+													"    pm.expect(extractID(body_response)).to.equal(pm.collectionVariables.get(\"id_new_supply_point\"))\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}supplypoints/{{id_new_supply_point}}",
+											"host": [
+												"{{base_url}}supplypoints"
+											],
+											"path": [
+												"{{id_new_supply_point}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "TC 5.1 (supply point already exist)",
+							"item": [
+								{
+									"name": "create supply point",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"\r",
+													"validate400BadRequest(pm)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\":\"1\",\r\n    \"tariff\":\"Three prices\",\r\n    \"invoiced_amount\":\"150.00\",\r\n    \"power\":{\"p1\":\"6700\",\"p2\":\"4700\"},\r\n    \"neighbors\":[\"7\"]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}supplypoints",
+											"host": [
+												"{{base_url}}supplypoints"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "TC 5.2 (client doesn't exist)",
+							"item": [
+								{
+									"name": "create supply point",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"\r",
+													"validate400BadRequest(pm)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\":\"20\",\r\n    \"tariff\":\"Three prices\",\r\n    \"invoiced_amount\":\"150.00\",\r\n    \"power\":{\"p1\":\"6700\",\"p2\":\"4700\"},\r\n    \"neighbors\":[\"7\"]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}supplypoints",
+											"host": [
+												"{{base_url}}supplypoints"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "TC 6 (know discount for a client)",
+					"item": [
+						{
+							"name": "TC 6.0 (client exist)",
+							"item": [
+								{
+									"name": "get client discount",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"let URL = pm.collectionVariables.get(\"base_url\") + \"discounts/1\"\r",
+													"\r",
+													"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+													"    if (err) {\r",
+													"        console.log(err)\r",
+													"    }\r",
+													"    else {\r",
+													"        body = resp.json()\r",
+													"        pm.collectionVariables.set(\"discount_type_client_4\", body.discount)\r",
+													"    }\r",
+													"})\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let body_response = pm.response.json()\r",
+													"\r",
+													"// Asserts\r",
+													"\r",
+													"validate200OK(pm)\r",
+													"validateBodyExist(pm)\r",
+													"validateIsAJson(pm)\r",
+													"\r",
+													"pm.test(\"It's the correct discount\", function() {\r",
+													"    pm.expect(pm.collectionVariables.get(\"discount_type_client_4\")).to.equal(body_response.type_of_discount)\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}discounts/?client_id=4",
+											"host": [
+												"{{base_url}}discounts"
+											],
+											"path": [
+												""
+											],
+											"query": [
+												{
+													"key": "client_id",
+													"value": "4"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "TC 6.1 (client doesn't exist)",
+							"item": [
+								{
+									"name": "get client discount Copy",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"validate404NotFound(pm)"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}discounts/?client_id=15",
+											"host": [
+												"{{base_url}}discounts"
+											],
+											"path": [
+												""
+											],
+											"query": [
+												{
+													"key": "client_id",
+													"value": "15"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "TC 7 (apply discount)",
+					"item": [
+						{
+							"name": "TC 7.0 (apply to old client)",
+							"item": [
+								{
+									"name": "apply discount",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"discount_exist = function(body_response) {\r",
+													"    try {\r",
+													"        let discount = body_response.discount_type\r",
+													"        return true\r",
+													"    }\r",
+													"    catch {\r",
+													"        return false\r",
+													"    }\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let body_response = pm.response.json()\r",
+													"\r",
+													"// Asserts\r",
+													"\r",
+													"validate200OK(pm)\r",
+													"validateBodyExist(pm)\r",
+													"validateIsAJson(pm)\r",
+													"\r",
+													"pm.test(\"Discount was asinged correctly\", function() {\r",
+													"    pm.expect(discount_exist(body_response)).not.to.equal(false)\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"discount\":\"1\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}discounts/apply/10",
+											"host": [
+												"{{base_url}}discounts"
+											],
+											"path": [
+												"apply",
+												"10"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "TC 7.1 (client doesn't exist)",
+							"item": [
+								{
+									"name": "apply discount",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"validate404NotFound(pm)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"discount\":\"1\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}discounts/apply/20",
+											"host": [
+												"{{base_url}}discounts"
+											],
+											"path": [
+												"apply",
+												"20"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "TC 7.2 (create client and apply discount)",
+							"item": [
+								{
+									"name": "post new client",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let body_response = pm.response.json()\r",
+													"\r",
+													"pm.collectionVariables.set(\"id_new_client_3\", extractID(body_response))\r",
+													"\r",
+													"// Asserts\r",
+													"\r",
+													"validate200OK(pm)\r",
+													"validateBodyExist(pm)\r",
+													"validateIsAJson(pm)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{{client_3}}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}clients",
+											"host": [
+												"{{base_url}}clients"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "apply discount Copy",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"discount_exist = function(body_response) {\r",
+													"    try {\r",
+													"        let discount = body_response.discount_type\r",
+													"        return true\r",
+													"    }\r",
+													"    catch {\r",
+													"        return false\r",
+													"    }\r",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"let body_response = pm.response.json()\r",
+													"\r",
+													"// Asserts\r",
+													"\r",
+													"validate200OK(pm)\r",
+													"validateBodyExist(pm)\r",
+													"validateIsAJson(pm)\r",
+													"\r",
+													"pm.test(\"Discount was asinged correctly\", function() {\r",
+													"    pm.expect(discount_exist(body_response)).not.to.equal(false)\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"discount\":\"3\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}discounts/apply/{{id_new_client_3}}",
+											"host": [
+												"{{base_url}}discounts"
+											],
+											"path": [
+												"apply",
+												"{{id_new_client_3}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "TC 7.3 (discount id is incorrect)",
+							"item": [
+								{
+									"name": "apply discount",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"validate404NotFound(pm)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"discount\":\"5\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}discounts/apply/20",
+											"host": [
+												"{{base_url}}discounts"
+											],
+											"path": [
+												"apply",
+												"20"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Endpoints",
+			"item": [
+				{
+					"name": "Clients",
+					"item": [
+						{
+							"name": "get clients",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}clients",
+									"host": [
+										"{{base_url}}clients"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get client by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct ID\", function() {\r",
+											"    let response_id = parseInt(extractID(body_response))\r",
+											"    pm.expect(response_id).to.equal(1)\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}clients/1",
+									"host": [
+										"{{base_url}}clients"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get client by name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct ID\", function() {\r",
+											"    pm.expect(extractID(body_response)).to.equal(\"1\")\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}clients/?name=Terry Evans",
+									"host": [
+										"{{base_url}}clients"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Terry Evans"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "post new client",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_new_client\", body_response.id)\r",
+											"pm.collectionVariables.set(\"name_new_client\", body_response.full_name)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{{client_1}}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}clients",
+									"host": [
+										"{{base_url}}clients"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit client by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"The name was edited\", function() {\r",
+											"    pm.expect(extractName(body_response.full_name)).to.not.equal(pm.collectionVariables.get(\"name_new_client\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": \"Potato street 15\",\r\n    \"building_type\": \"house\",\r\n    \"full_name\": \"Test Postman Edit\",\r\n    \"id\": \"{{id_new_client}}\",\r\n    \"role\": \"customer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}clients/{{id_new_client}}",
+									"host": [
+										"{{base_url}}clients"
+									],
+									"path": [
+										"{{id_new_client}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete client by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"the length is diferent\", function() {\r",
+											"    pm.expect(pm.collectionVariables.get(\"length_before_delete\")).to.not.equal((body_response.length)-1)\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let URL = pm.collectionVariables.get(\"base_url\") + \"clients\"\r",
+											"\r",
+											"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+											"    if (err) {\r",
+											"        console.log(err)\r",
+											"    }\r",
+											"    else {\r",
+											"        body = resp.json()\r",
+											"        pm.collectionVariables.set(\"length_before_delete\", body.length)\r",
+											"    }\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}clients/{{id_new_client}}",
+									"host": [
+										"{{base_url}}clients"
+									],
+									"path": [
+										"{{id_new_client}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Supply Points",
+					"item": [
+						{
+							"name": "get supply points",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}supplypoints",
+									"host": [
+										"{{base_url}}supplypoints"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get supply point by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct ID\", function() {\r",
+											"    pm.expect(extractID(body_response)).to.equal(\"2\")\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}supplypoints/2",
+									"host": [
+										"{{base_url}}supplypoints"
+									],
+									"path": [
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create supply point",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_new_supply_point\", body_response.id)\r",
+											"pm.collectionVariables.set(\"invoiced_amount_new_supply_point\", body_response.invoiced_amount)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":\"10\",\r\n    \"tariff\":\"Three prices\",\r\n    \"invoiced_amount\":\"150.00\",\r\n    \"power\":{\"p1\":\"6700\",\"p2\":\"4700\"},\r\n    \"neighbors\":[\"7\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}supplypoints",
+									"host": [
+										"{{base_url}}supplypoints"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit supply point by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"The invoiced_amount was edited\", function() {\r",
+											"    pm.expect(extractName(body_response.invoiced_amount)).to.not.equal(pm.collectionVariables.get(\"invoiced_amount_new_supply_point\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":\"{{id_new_supply_point}}\",\r\n    \"tariff\":\"Simple prices\",\r\n    \"invoiced_amount\":\"150.00\",\r\n    \"power\":{\"p1\":\"6700\",\"p2\":\"4700\"},\r\n    \"neighbors\":[\"7\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}supplypoints/{{id_new_supply_point}}",
+									"host": [
+										"{{base_url}}supplypoints"
+									],
+									"path": [
+										"{{id_new_supply_point}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete supply point by id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let URL = pm.collectionVariables.get(\"base_url\") + \"supplypoints\"\r",
+											"\r",
+											"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+											"    if (err) {\r",
+											"        console.log(err)\r",
+											"    }\r",
+											"    else {\r",
+											"        body = resp.json()\r",
+											"        pm.collectionVariables.set(\"length_before_delete\", body.length)\r",
+											"    }\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"the length is diferent\", function() {\r",
+											"    pm.expect(pm.collectionVariables.get(\"length_before_delete\")).to.not.equal((body_response.length)-1)\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}supplypoints/{{id_new_supply_point}}",
+									"host": [
+										"{{base_url}}supplypoints"
+									],
+									"path": [
+										"{{id_new_supply_point}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Discounts",
+					"item": [
+						{
+							"name": "get discount",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}discounts",
+									"host": [
+										"{{base_url}}discounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get discount by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct ID\", function() {\r",
+											"    pm.expect(extractID(body_response)).to.equal(\"2\")\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}discounts/2",
+									"host": [
+										"{{base_url}}discounts"
+									],
+									"path": [
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get client discount",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let URL = pm.collectionVariables.get(\"base_url\") + \"discounts/1\"\r",
+											"\r",
+											"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+											"    if (err) {\r",
+											"        console.log(err)\r",
+											"    }\r",
+											"    else {\r",
+											"        body = resp.json()\r",
+											"        pm.collectionVariables.set(\"discount_type_client_4\", body.discount)\r",
+											"    }\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct discount\", function() {\r",
+											"    pm.expect(pm.collectionVariables.get(\"discount_type_client_4\")).to.equal(body_response.type_of_discount)\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}discounts/?client_id=4",
+									"host": [
+										"{{base_url}}discounts"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"validate200OK = function (pm) {",
+					"    pm.test(\"Status code is 200\", function () {",
+					"        pm.response.to.have.status(200);",
+					"    });",
+					"}",
+					"",
+					"validate404NotFound = function (pm) {",
+					"    pm.test(\"Status code is 404\", function () {",
+					"        pm.response.to.have.status(404);",
+					"    });",
+					"}",
+					"",
+					"validate400BadRequest = function (pm) {",
+					"    pm.test(\"Status code is 400\", function () {",
+					"        pm.response.to.have.status(400);",
+					"    });",
+					"}",
+					"",
+					"validateBodyExist = function (pm) {",
+					"    pm.test(\"Response has a body\", function () {",
+					"        pm.response.to.be.withBody",
+					"    })",
+					"}",
+					"",
+					"validateIsAJson = function (pm) {",
+					"    pm.test(\"Response is a Json\", function () {",
+					"        pm.response.to.be.json",
+					"    })",
+					"}",
+					"",
+					"extractID = function (body_response) {",
+					"    id = body_response.id",
+					"    return id",
+					"}",
+					"",
+					"extractName = function(body_response) {",
+					"    name = body_response.full_name",
+					"    return name",
+					"}",
+					"",
+					"let client_1 = `{",
+					"    \"address\": \"Potato street 15\",",
+					"    \"building_type\": \"house\",",
+					"    \"full_name\": \"Test Postman\",",
+					"    \"id\": \"7\",",
+					"    \"role\": \"customer\"",
+					"}`",
+					"",
+					"pm.collectionVariables.set(\"client_1\", client_1)",
+					"",
+					"let client_2 = `{",
+					"    \"address\": \"Potato street 12\",",
+					"    \"building_type\": \"house\",",
+					"    \"full_name\": \"Test Postman2\",",
+					"    \"id\": \"15\",",
+					"    \"role\": \"customer\"",
+					"}`",
+					"",
+					"pm.collectionVariables.set(\"client_2\", client_2)",
+					"",
+					"let client_3 = `{",
+					"    \"address\": \"Potato street 17\",",
+					"    \"building_type\": \"house\",",
+					"    \"full_name\": \"Test Postman3\",",
+					"    \"id\": \"18\",",
+					"    \"role\": \"customer\"",
+					"}`",
+					"",
+					"pm.collectionVariables.set(\"client_3\", client_3)",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:5000/",
+			"type": "string"
+		},
+		{
+			"key": "client_1",
+			"value": ""
+		},
+		{
+			"key": "client_2",
+			"value": ""
+		},
+		{
+			"key": "id_new_client",
+			"value": ""
+		},
+		{
+			"key": "name_new_client",
+			"value": ""
+		},
+		{
+			"key": "length_before_delete",
+			"value": ""
+		},
+		{
+			"key": "id_new_supply_point",
+			"value": ""
+		},
+		{
+			"key": "invoiced_amount_new_supply_point",
+			"value": ""
+		},
+		{
+			"key": "discount_type_client_4",
+			"value": ""
+		},
+		{
+			"key": "name_before_edit",
+			"value": ""
+		},
+		{
+			"key": "name_after_edit",
+			"value": ""
+		},
+		{
+			"key": "id_new_client_2",
+			"value": ""
+		},
+		{
+			"key": "name_new_client_2",
+			"value": ""
+		},
+		{
+			"key": "client_3",
+			"value": ""
+		},
+		{
+			"key": "id_new_client_3",
+			"value": ""
+		}
+	]
+}

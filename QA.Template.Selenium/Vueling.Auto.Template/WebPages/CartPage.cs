@@ -61,6 +61,15 @@ namespace DemoBlaze.Template.WebPages
             return this;
         }
 
+        public CartPage ProductsExist(string[] imgs)
+        {
+            foreach (var img in imgs)
+            {
+                Assert.IsTrue(ImageProduct(img).Displayed, "La imagen no aparece");
+            }
+            return this; 
+        }
+
         public CartPage FillForm(string[] inputs, string[] data)
         {
             int i = 0;

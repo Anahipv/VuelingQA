@@ -14,10 +14,10 @@ using NUnit.Framework;
 
 namespace DemoBlaze.Template.WebPages
 {
-    public class LaptopsPage : CommonPage
+    public class MonitorsPage : CommonPage
 
     {
-        public LaptopsPage(ISetUpWebDriver setUpWebDriver) : base(setUpWebDriver)
+        public MonitorsPage(ISetUpWebDriver setUpWebDriver) : base(setUpWebDriver)
         {
         }
 
@@ -25,26 +25,26 @@ namespace DemoBlaze.Template.WebPages
 
         private IWebElement Product(string product)
         {
-            return WebDriver.FindElementByCssSelector("a[href='" +  product + "']");
+            return WebDriver.FindElementByCssSelector("a[href='" + product + "']");
             //get { return WebDriver.FindElementByXPath("//a[text()='MacBook air']"); }
         }
 
-        private IWebElement LaptopName
+        private IWebElement MonitorName
         {
             get { return WebDriver.FindElementByCssSelector(".name"); }
         }
 
-        private By _LaptopName
+        private By _MonitorName
         {
             get { return By.CssSelector(".name"); }
         }
 
-        public LaptopsPage ClickProduct(string product, string laptop_name)
+        public MonitorsPage ClickProduct(string product, string monitor_name)
         {
             Product(product).Click();
             new WebDriverWait(WebDriver, TimeSpan.FromSeconds(WaitTimeout)).
-            Until(CustomExpectedConditions.ElementIsVisible(_LaptopName));
-            Assert.AreEqual(laptop_name, LaptopName.Text);
+            Until(CustomExpectedConditions.ElementIsVisible(_MonitorName));
+            Assert.AreEqual(monitor_name, MonitorName.Text);
             return this;
         }
 

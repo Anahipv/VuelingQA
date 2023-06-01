@@ -156,6 +156,8 @@
     <Compile Include="WebPages\GooglePage.cs" />
     <Compile Include="WebPages\GoogleSearch.cs" />
     <Compile Include="WebPages\HomePage.cs" />
+    <Compile Include="WebPages\MonitorsPagecs.cs" />
+    <Compile Include="WebPages\PhonesPage.cs" />
     <Compile Include="WebPages\ProductPage.cs" />
   </ItemGroup>
   <ItemGroup>

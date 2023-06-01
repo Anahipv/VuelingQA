@@ -98,5 +98,11 @@ namespace DemoBlaze.Template.WebPages
             return this;
         }
 
+        public HomePage ClickHome()
+        {
+            BtnHome.Click();
+            return this;
+        }
+
     }
 }

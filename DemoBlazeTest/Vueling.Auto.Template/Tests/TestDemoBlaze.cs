@@ -1,6 +1,5 @@
 ﻿using AventStack.ExtentReports;
 using NUnit.Framework;
-using DemoBlaze.Template.Webpages;
 using DemoBlaze.Template.Common;
 using DemoBlaze.Template.WebPages;
 using OpenQA.Selenium.Support.UI;

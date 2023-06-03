@@ -5,12 +5,11 @@ using NUnit.Framework.Interfaces;
 using System;
 using System.IO;
 using System.Threading;
-using DemoBlaze.Template.SetUp;
-using DemoBlaze.Template.Webpages;
-using DemoBlaze.Template.WebPages.Base;
-using DemoBlaze.Template.WebPages;
+using Level.Template.SetUp;
+using Level.Template.WebPages.Base;
+using Level.Template.WebPages;
 
-namespace DemoBlaze.Template.Tests
+namespace Level.Template.Tests
 {
     [SetUpFixture]
     [Parallelizable(ParallelScope.Fixtures)]
@@ -59,13 +58,10 @@ namespace DemoBlaze.Template.Tests
     public class TestSetCleanBase
     {
         #region Definitions
-        protected GooglePage googlePage;
-        protected GoogleSearch googleSearch;
         protected Page page;
         protected ISetUpWebDriver setUpWebDriver;
         protected ObjectsTest objectsTest;
         protected ExtentTest test;
-        protected HomePage HomePage;
         #endregion
 
         [SetUp]

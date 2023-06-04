@@ -1,0 +1,1320 @@
+{
+	"id": "c8e6d87c-0811-4056-87b6-3f4edacb8dac",
+	"name": "Trello Api",
+	"timestamp": "2023-06-04T14:49:17.270Z",
+	"collection_id": "20061007-a78357bc-0426-4a3f-9f59-dac0d4637639",
+	"folder_id": "20061007-94456de3-94d9-4803-b1a3-6fdcfc2e666c",
+	"environment_id": "20061007-5c7cb6f1-1d18-40c7-98ad-ed4ce989e711",
+	"totalPass": 92,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-06-04T14:49:05.063Z",
+	"totalFail": 4,
+	"results": [
+		{
+			"id": "cd53fda6-4565-46cd-9f8e-0a254dc5684d",
+			"name": "create board",
+			"url": "https://api.trello.com/1/boards/?name=Postman 1&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 392,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct name": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				392
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct name": true
+				}
+			]
+		},
+		{
+			"id": "0cf278de-141d-41f1-97a7-0ae00d4e2f4a",
+			"name": "get boards",
+			"url": "https://api.trello.com/1/members/me/boards?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 226,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"One element was posted": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"One element was posted": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				226
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"One element was posted": true
+				}
+			]
+		},
+		{
+			"id": "f442463e-1fda-4a28-bb4e-3422455daadc",
+			"name": "get board",
+			"url": "https://api.trello.com/1/boards/647ca464fc279c343f5eede0?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 265,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct ID": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				265
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct ID": true
+				}
+			]
+		},
+		{
+			"id": "fd2bda58-ac28-447f-a3ad-529310af93e1",
+			"name": "edit board",
+			"url": "https://api.trello.com/1/boards/647ca464fc279c343f5eede0?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 286,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct name": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				286
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct name": true
+				}
+			]
+		},
+		{
+			"id": "d00795f4-220c-4866-be87-0cb98a0d1a71",
+			"name": "create list",
+			"url": "https://api.trello.com/1/lists?name=Postman 1&idBoard=647ca464fc279c343f5eede0&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 234,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct name": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				234
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct name": true
+				}
+			]
+		},
+		{
+			"id": "bb664a4e-4bd8-43c4-ad2a-9005550ed48d",
+			"name": "get boards",
+			"url": "https://api.trello.com/1/members/me/boards?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 219,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				219
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "db79db6e-69cc-4e2c-87e1-37485db341c0",
+			"name": "move list and edit name",
+			"url": "https://api.trello.com/1/lists/647ca4653e596bb08cde3796?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 443,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"The name was edited": true,
+				"The id board was edited": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The name was edited": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The id board was edited": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				443
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"The name was edited": true,
+					"The id board was edited": true
+				}
+			]
+		},
+		{
+			"id": "310ffa63-707c-464d-8ca7-c8dc575226d3",
+			"name": "create list",
+			"url": "https://api.trello.com/1/lists?name=Postman 1&idBoard=647ca464fc279c343f5eede0&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 242,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct name": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				242
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct name": true
+				}
+			]
+		},
+		{
+			"id": "c2f53972-fff2-452d-abef-15e1e2279168",
+			"name": "create card",
+			"url": "https://api.trello.com/1/cards?idList=647ca4675030d5021e31fbef&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 345,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				345
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "e7b2d997-6ee9-43b2-a658-79c3e5ec322b",
+			"name": "create label",
+			"url": "https://api.trello.com/1/labels?name=Postman 2&color=purple&idBoard=647ca464fc279c343f5eede0&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 237,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				237
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "c4c3ee6d-f9f6-4a2f-8699-bbbd1608e4e5",
+			"name": "edit card",
+			"url": "https://api.trello.com/1/cards/647ca4676deeafc32910bf26?&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 376,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct name": true,
+				"The label was added": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct name": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The label was added": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				376
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct name": true,
+					"The label was added": true
+				}
+			]
+		},
+		{
+			"id": "53dab872-8432-41e6-b6d1-f8dba365ef3a",
+			"name": "get lists",
+			"url": "https://api.trello.com/1/boards/647ca464fc279c343f5eede0/lists?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 229,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				229
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "a9aa3818-c17e-4620-a28c-213c181cb33d",
+			"name": "edit card",
+			"url": "https://api.trello.com/1/cards/647ca4676deeafc32910bf26?&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 370,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"The card was moved": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The card was moved": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				370
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"The card was moved": true
+				}
+			]
+		},
+		{
+			"id": "467d24c4-9678-4ea9-936f-bc17df238d28",
+			"name": "move all cards",
+			"url": "https://api.trello.com/1/lists/647ca4675030d5021e31fbef/moveAllCards?idBoard=647ca464fc279c343f5eede0&idList=647ca464fc279c343f5eede9&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 245,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				245
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "41330a8d-69ae-43b5-809c-9a242e6ce78b",
+			"name": "the list is empty",
+			"url": "https://api.trello.com/1/cards/647ca4675030d5021e31fbef/list?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 211,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200": false,
+				"The body is empty": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				},
+				"The body is empty": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				211
+			],
+			"allTests": [
+				{
+					"Status code is 200": false,
+					"The body is empty": false
+				}
+			]
+		},
+		{
+			"id": "0ef5ec27-01c1-4f34-8c31-093655d093b3",
+			"name": "create list",
+			"url": "https://api.trello.com/1/lists?name=Postman 2&idBoard=647ca464fc279c343f5eede0&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 287,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"It's the correct name": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"It's the correct name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				287
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"It's the correct name": true
+				}
+			]
+		},
+		{
+			"id": "fb2feabc-7735-483a-be69-1edcaa8075bd",
+			"name": "create card",
+			"url": "https://api.trello.com/1/cards?idList=647ca469f9493a8be0a9a9f3&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 336,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				336
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "45760a43-ce1f-4dbb-bf85-cae81d3ce425",
+			"name": "create card",
+			"url": "https://api.trello.com/1/cards?idList=647ca469f9493a8be0a9a9f3&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 367,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				367
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "fd23c848-caac-407e-9bf2-34d639db0c9e",
+			"name": "get cards",
+			"url": "https://api.trello.com/1/cards/647ca469f9493a8be0a9a9f3/list?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 298,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200": false,
+				"Response has a body": true,
+				"Response is a Json": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				298
+			],
+			"allTests": [
+				{
+					"Status code is 200": false,
+					"Response has a body": true,
+					"Response is a Json": false
+				}
+			]
+		},
+		{
+			"id": "d161fffb-3c6a-42a3-a57f-982fec7a3602",
+			"name": "archive all cards",
+			"url": "https://api.trello.com/1/lists/647ca469f9493a8be0a9a9f3/archiveAllCards?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 314,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"The body is empty": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The body is empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				314
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"The body is empty": true
+				}
+			]
+		},
+		{
+			"id": "f36864c0-911e-41f6-a47e-8d53808dd6ba",
+			"name": "get lists",
+			"url": "https://api.trello.com/1/boards/647ca464fc279c343f5eede0/lists?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 233,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"The list is not archive": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The list is not archive": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				233
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"The list is not archive": true
+				}
+			]
+		},
+		{
+			"id": "da2d0487-8d07-4c8f-888d-7d39a82647ff",
+			"name": "archieve list",
+			"url": "https://api.trello.com/1/lists/647ca469f9493a8be0a9a9f3/?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4&closed=true",
+			"time": 269,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"The list was archived": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The list was archived": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				269
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"The list was archived": true
+				}
+			]
+		},
+		{
+			"id": "4b6e8fd4-2b89-4967-9788-6fa5edff151e",
+			"name": "unarchieve list Copy",
+			"url": "https://api.trello.com/1/lists/647ca469f9493a8be0a9a9f3/?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4&closed=false",
+			"time": 285,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"The list was archived": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The list was archived": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				285
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"The list was archived": true
+				}
+			]
+		},
+		{
+			"id": "d3f62c61-8b09-4136-87be-2adec796132a",
+			"name": "create card",
+			"url": "https://api.trello.com/1/cards?idList=647ca469f9493a8be0a9a9f3&key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 309,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				309
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "ed6434cf-1cb0-4a73-a688-23971b9fc10b",
+			"name": "delete card",
+			"url": "https://api.trello.com/1/cards/647ca46c91601493d7e39585?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 484,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				484
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "3791c4ff-8363-48d8-8310-7efd48e5d050",
+			"name": "card doesn't exist",
+			"url": "https://api.trello.com/1/cards/647ca46c91601493d7e39585?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 216,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				216
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "a5934aa1-daa3-4762-916c-e2f6e43d8916",
+			"name": "get boards",
+			"url": "https://api.trello.com/1/members/me/boards?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 227,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				227
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "da384757-8bb1-4bd1-bc8c-c19ac727eef6",
+			"name": "delete board",
+			"url": "https://api.trello.com/1/boards/647bd5f16d9f2fd159828210?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 1091,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1091
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true
+				}
+			]
+		},
+		{
+			"id": "dbfabda1-8c03-4a16-82e5-b1d825eda4ae",
+			"name": "get boards",
+			"url": "https://api.trello.com/1/members/me/boards?key=96f185704d01c4d3c46127b155c91934&token=ATTAfeff57fc660ed427ed5defb21d459be22d457a1b6017248cb171617f2b3b08f1F82725C4",
+			"time": 218,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has a body": true,
+				"Response is a Json": true,
+				"One element was deleted": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has a body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a Json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"One element was deleted": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				218
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has a body": true,
+					"Response is a Json": true,
+					"One element was deleted": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 9254,
+	"collection": {
+		"requests": [
+			{
+				"id": "cd53fda6-4565-46cd-9f8e-0a254dc5684d",
+				"method": "POST"
+			},
+			{
+				"id": "0cf278de-141d-41f1-97a7-0ae00d4e2f4a",
+				"method": "GET"
+			},
+			{
+				"id": "f442463e-1fda-4a28-bb4e-3422455daadc",
+				"method": "GET"
+			},
+			{
+				"id": "fd2bda58-ac28-447f-a3ad-529310af93e1",
+				"method": "PUT"
+			},
+			{
+				"id": "d00795f4-220c-4866-be87-0cb98a0d1a71",
+				"method": "POST"
+			},
+			{
+				"id": "bb664a4e-4bd8-43c4-ad2a-9005550ed48d",
+				"method": "GET"
+			},
+			{
+				"id": "db79db6e-69cc-4e2c-87e1-37485db341c0",
+				"method": "PUT"
+			},
+			{
+				"id": "310ffa63-707c-464d-8ca7-c8dc575226d3",
+				"method": "POST"
+			},
+			{
+				"id": "c2f53972-fff2-452d-abef-15e1e2279168",
+				"method": "POST"
+			},
+			{
+				"id": "e7b2d997-6ee9-43b2-a658-79c3e5ec322b",
+				"method": "POST"
+			},
+			{
+				"id": "c4c3ee6d-f9f6-4a2f-8699-bbbd1608e4e5",
+				"method": "PUT"
+			},
+			{
+				"id": "53dab872-8432-41e6-b6d1-f8dba365ef3a",
+				"method": "GET"
+			},
+			{
+				"id": "a9aa3818-c17e-4620-a28c-213c181cb33d",
+				"method": "PUT"
+			},
+			{
+				"id": "467d24c4-9678-4ea9-936f-bc17df238d28",
+				"method": "POST"
+			},
+			{
+				"id": "41330a8d-69ae-43b5-809c-9a242e6ce78b",
+				"method": "GET"
+			},
+			{
+				"id": "0ef5ec27-01c1-4f34-8c31-093655d093b3",
+				"method": "POST"
+			},
+			{
+				"id": "fb2feabc-7735-483a-be69-1edcaa8075bd",
+				"method": "POST"
+			},
+			{
+				"id": "45760a43-ce1f-4dbb-bf85-cae81d3ce425",
+				"method": "POST"
+			},
+			{
+				"id": "fd23c848-caac-407e-9bf2-34d639db0c9e",
+				"method": "GET"
+			},
+			{
+				"id": "d161fffb-3c6a-42a3-a57f-982fec7a3602",
+				"method": "POST"
+			},
+			{
+				"id": "f36864c0-911e-41f6-a47e-8d53808dd6ba",
+				"method": "GET"
+			},
+			{
+				"id": "da2d0487-8d07-4c8f-888d-7d39a82647ff",
+				"method": "PUT"
+			},
+			{
+				"id": "4b6e8fd4-2b89-4967-9788-6fa5edff151e",
+				"method": "PUT"
+			},
+			{
+				"id": "d3f62c61-8b09-4136-87be-2adec796132a",
+				"method": "POST"
+			},
+			{
+				"id": "ed6434cf-1cb0-4a73-a688-23971b9fc10b",
+				"method": "DELETE"
+			},
+			{
+				"id": "3791c4ff-8363-48d8-8310-7efd48e5d050",
+				"method": "GET"
+			},
+			{
+				"id": "a5934aa1-daa3-4762-916c-e2f6e43d8916",
+				"method": "GET"
+			},
+			{
+				"id": "da384757-8bb1-4bd1-bc8c-c19ac727eef6",
+				"method": "DELETE"
+			},
+			{
+				"id": "dbfabda1-8c03-4a16-82e5-b1d825eda4ae",
+				"method": "GET"
+			}
+		]
+	}
+}

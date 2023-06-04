@@ -1,0 +1,2728 @@
+{
+	"info": {
+		"_postman_id": "67a9d04c-73ed-4530-85e6-14aded98ded6",
+		"name": "Trello Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27575703"
+	},
+	"item": [
+		{
+			"name": "endpoints",
+			"item": [
+				{
+					"name": "create board",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let URL = pm.environment.get(\"base_url\") + \"/1/members/me/boards?key=\" + pm.environment.get(\"api_key\") + \"&token=\" + pm.environment.get(\"token\")\r",
+									"\r",
+									"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+									"    if (err) {\r",
+									"        console.log(err)\r",
+									"    }\r",
+									"    else {\r",
+									"        body = resp.json()\r",
+									"        pm.collectionVariables.set(\"length_before_post\", body.length)\r",
+									"    }\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"pm.collectionVariables.set(\"id_board\", extractID(body_response))\r",
+									"\r",
+									"// Asserts\r",
+									"\r",
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)\r",
+									"\r",
+									"pm.test(\"It's the correct name\", function() {\r",
+									"    pm.expect(extractName(body_response)).to.equal(pm.collectionVariables.get(\"name_1\"))\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/1/boards/?name={{name_1}}&key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{name_1}}"
+								},
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"// Asserts\r",
+									"\r",
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)\r",
+									"\r",
+									"pm.test(\"It's the correct ID\", function() {\r",
+									"    pm.expect(extractID(body_response)).to.equal(pm.collectionVariables.get(\"id_board\"))\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/1/boards/{{id_board}}?key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{id_board}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get boards",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/1/members/me/boards?key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"me",
+								"boards"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"// Asserts\r",
+									"\r",
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)\r",
+									"\r",
+									"pm.test(\"It's the correct name\", function() {\r",
+									"    pm.expect(extractName(body_response)).not.to.equal(pm.collectionVariables.get(\"name_board_before_edit\"))\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let URL = pm.environment.get(\"base_url\") + \"/1/boards/\" + pm.collectionVariables.get(\"id_board\") + \"?key=\" + pm.environment.get(\"api_key\") + \"&token=\" + pm.environment.get(\"token\")\r",
+									"\r",
+									"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+									"    if (err) {\r",
+									"        console.log(err)\r",
+									"    }\r",
+									"    else {\r",
+									"        body = resp.json()\r",
+									"        pm.collectionVariables.set(\"name_board_before_edit\", body.name)\r",
+									"    }\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Test edit name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/1/boards/{{id_board}}?key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{id_board}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"pm.collectionVariables.set(\"id_list\",body_response.id)\r",
+									"\r",
+									"// Asserts\r",
+									"\r",
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)\r",
+									"\r",
+									"pm.test(\"It's the correct name\", function() {\r",
+									"    pm.expect(extractName(body_response)).to.equal(pm.collectionVariables.get(\"name_1\"))\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/1/lists?name={{name_1}}&idBoard={{id_board}}&key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{name_1}}"
+								},
+								{
+									"key": "idBoard",
+									"value": "{{id_board}}"
+								},
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"pm.collectionVariables.set(\"id_card\",body_response.id)\r",
+									"\r",
+									"// Asserts\r",
+									"\r",
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "{{name}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/1/cards?idList={{id_list}}&key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{id_list}}"
+								},
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cards",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/1/cards/{{id_list}}/list?key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"cards",
+								"{{id_list}}",
+								"list"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"// Asserts\r",
+									"\r",
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)\r",
+									"\r",
+									"pm.test(\"It's the correct ID\", function() {\r",
+									"    pm.expect(extractID(body_response)).to.equal(pm.collectionVariables.get(\"id_card\"))\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/1/cards/{{id_card}}?key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"cards",
+								"{{id_card}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"// Asserts\r",
+									"\r",
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)\r",
+									"\r",
+									"pm.test(\"It's the correct name\", function() {\r",
+									"    pm.expect(extractName(body_response)).not.to.equal(pm.collectionVariables.get(\"name_card_before_edit\"))\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let URL = pm.environment.get(\"base_url\") + \"/1/cards/\" + pm.collectionVariables.get(\"id_card\") + \"?key=\" + pm.environment.get(\"api_key\") + \"&token=\" + pm.environment.get(\"token\")\r",
+									"\r",
+									"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+									"    if (err) {\r",
+									"        console.log(err)\r",
+									"    }\r",
+									"    else {\r",
+									"        body = resp.json()\r",
+									"        pm.collectionVariables.set(\"name_card_before_edit\", body.name)\r",
+									"    }\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Edit name card\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/1/cards/{{id_card}}?&key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"cards",
+								"{{id_card}}"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": null
+								},
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create label",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let body_response = pm.response.json()\r",
+									"\r",
+									"pm.collectionVariables.set(\"id_label\",body_response.id)\r",
+									"\r",
+									"// Asserts\r",
+									"\r",
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.trello.com/1/labels?name={{name_2}}&color={{color_1}}&idBoard={{id_board}}&key={{api_key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"labels"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{name_2}}"
+								},
+								{
+									"key": "color",
+									"value": "{{color_1}}"
+								},
+								{
+									"key": "idBoard",
+									"value": "{{id_board}}"
+								},
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get lists",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/1/boards/{{id_board}}/lists?key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{id_board}}",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete board",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"/*let URL = pm.environment.get(\"base_url\") + \"/1/members/me/boards?key=\" + pm.environment.get(\"api_key\") + \"&token=\" + pm.environment.get(\"token\")\r",
+									"\r",
+									"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+									"    if (err) {\r",
+									"        console.log(err)\r",
+									"    }\r",
+									"    else {\r",
+									"        body = resp.json()\r",
+									"        pm.collectionVariables.set(\"length_before_delete\", body.length)\r",
+									"    }\r",
+									"})*/"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//let body_response = pm.response.json()\r",
+									"\r",
+									"// Asserts\r",
+									"\r",
+									"validate200OK(pm)\r",
+									"validateBodyExist(pm)\r",
+									"validateIsAJson(pm)\r",
+									"\r",
+									"/*pm.test(\"One element was deleted\", function() {\r",
+									"    let length_int = parseInt(pm.collectionVariables.get(\"length_before_delete\")) - 1\r",
+									"    pm.expect(length_int).to.equal(body_response.length)\r",
+									"})*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/1/boards/{{id_board}}?key={{api_key}}&token={{token}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{id_board}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Regression",
+			"item": [
+				{
+					"name": "TC 1 (create and edit board)",
+					"item": [
+						{
+							"name": "create board",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let URL = pm.environment.get(\"base_url\") + \"/1/members/me/boards?key=\" + pm.environment.get(\"api_key\") + \"&token=\" + pm.environment.get(\"token\")\r",
+											"\r",
+											"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+											"    if (err) {\r",
+											"        console.log(err)\r",
+											"    }\r",
+											"    else {\r",
+											"        body = resp.json()\r",
+											"        pm.collectionVariables.set(\"length_before_post\", body.length)\r",
+											"    }\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_board\", extractID(body_response))\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct name\", function() {\r",
+											"    pm.expect(extractName(body_response)).to.equal(pm.collectionVariables.get(\"name_1\"))\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/1/boards/?name={{name_1}}&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{{name_1}}"
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get boards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"\r",
+											"pm.test(\"One element was posted\", function() {\r",
+											"    let length_before = parseInt(pm.collectionVariables.get(\"length_before_post\")) + 1\r",
+											"    let actual_length = parseInt(body_response.length)\r",
+											"    pm.expect(length_before).to.equal(actual_length)\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/members/me/boards?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"members",
+										"me",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct ID\", function() {\r",
+											"    pm.expect(extractID(body_response)).to.equal(pm.collectionVariables.get(\"id_board\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/boards/{{id_board}}?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{id_board}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct name\", function() {\r",
+											"    pm.expect(extractName(body_response)).not.to.equal(pm.collectionVariables.get(\"name_board_before_edit\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let URL = pm.environment.get(\"base_url\") + \"/1/boards/\" + pm.collectionVariables.get(\"id_board\") + \"?key=\" + pm.environment.get(\"api_key\") + \"&token=\" + pm.environment.get(\"token\")\r",
+											"\r",
+											"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+											"    if (err) {\r",
+											"        console.log(err)\r",
+											"    }\r",
+											"    else {\r",
+											"        body = resp.json()\r",
+											"        pm.collectionVariables.set(\"name_board_before_edit\", body.name)\r",
+											"    }\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Test edit name\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/1/boards/{{id_board}}?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{id_board}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 2 (create and move list)",
+					"item": [
+						{
+							"name": "create list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_list\",body_response.id)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct name\", function() {\r",
+											"    pm.expect(extractName(body_response)).to.equal(pm.collectionVariables.get(\"name_1\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/lists?name={{name_1}}&idBoard={{id_board}}&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"lists"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{{name_1}}"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{id_board}}"
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get boards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"body_response.forEach (function(elm){\r",
+											"    console.log(elm)\r",
+											"    if (pm.collectionVariables.get(\"id_board\") != elm.id){\r",
+											"        pm.collectionVariables.set(\"id_board2\", elm.id)\r",
+											"    }\r",
+											"})\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/members/me/boards?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"members",
+										"me",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "move list and edit name",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let URL = pm.environment.get(\"base_url\") + \"/1/lists/\" + pm.collectionVariables.get(\"id_list\") + \"?key=\" + pm.environment.get(\"api_key\") + \"&token=\" + pm.environment.get(\"token\")\r",
+											"\r",
+											"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+											"    if (err) {\r",
+											"        console.log(err)\r",
+											"    }\r",
+											"    else {\r",
+											"        body = resp.json()\r",
+											"        pm.collectionVariables.set(\"name_list_before_edit\", body.name)\r",
+											"        pm.collectionVariables.set(\"id_board_before_edit\", body.idBoard)\r",
+											"        console.log(pm.collectionVariables.get(\"id_board_before_edit\"))\r",
+											"    }\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"The name was edited\", function() {\r",
+											"    pm.expect(extractName(body_response)).not.to.equal(pm.collectionVariables.get(\"name_list_before_edit\"))\r",
+											"})\r",
+											"\r",
+											"pm.test(\"The id board was edited\", function() {\r",
+											"    console.log(body_response.idBoard)\r",
+											"    pm.expect(body_response.idBoard).not.to.equal(pm.collectionVariables.get(\"id_board_before_edit\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Edit name list\",\r\n    \"idBoard\":\"{{id_board2}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/1/lists/{{id_list}}?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{id_list}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 3 (create card and add label)",
+					"item": [
+						{
+							"name": "create list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_list\",body_response.id)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct name\", function() {\r",
+											"    pm.expect(extractName(body_response)).to.equal(pm.collectionVariables.get(\"name_1\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/lists?name={{name_1}}&idBoard={{id_board}}&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"lists"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{{name_1}}"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{id_board}}"
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_card\", body_response.id)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "{{name_1}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/1/cards?idList={{id_list}}&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"cards"
+									],
+									"query": [
+										{
+											"key": "idList",
+											"value": "{{id_list}}"
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create label",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_label\",body_response.id)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.trello.com/1/labels?name={{name_2}}&color={{color_1}}&idBoard={{id_board}}&key={{api_key}}&token={{token}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"trello",
+										"com"
+									],
+									"path": [
+										"1",
+										"labels"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{{name_2}}"
+										},
+										{
+											"key": "color",
+											"value": "{{color_1}}"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{id_board}}"
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct name\", function() {\r",
+											"    pm.expect(extractName(body_response)).not.to.equal(pm.collectionVariables.get(\"name_card_before_edit\"))\r",
+											"})\r",
+											"\r",
+											"pm.test(\"The label was added\", function() {\r",
+											"    let length_label = body_response.labels.length\r",
+											"    pm.expect(extractName(length_label)).not.to.equal(pm.collectionVariables.get(\"labels_card_before_edit\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let URL = pm.environment.get(\"base_url\") + \"/1/cards/\" + pm.collectionVariables.get(\"id_card\") + \"?key=\" + pm.environment.get(\"api_key\") + \"&token=\" + pm.environment.get(\"token\")\r",
+											"\r",
+											"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+											"    if (err) {\r",
+											"        console.log(err)\r",
+											"    }\r",
+											"    else {\r",
+											"        body = resp.json()\r",
+											"        pm.collectionVariables.set(\"name_card_before_edit\", body.name)\r",
+											"        pm.collectionVariables.set(\"labels_card_before_edit\", body.labels.length)\r",
+											"    }\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Edit name card\",\r\n    \"idLabels\":\"{{id_label}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/1/cards/{{id_card}}?&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{id_card}}"
+									],
+									"query": [
+										{
+											"key": null,
+											"value": null
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 4 (move card to other list)",
+					"item": [
+						{
+							"name": "get lists",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"body_response.forEach (function(elm){\r",
+											"    console.log(elm)\r",
+											"    if (pm.collectionVariables.get(\"id_list\") != elm.id){\r",
+											"        pm.collectionVariables.set(\"id_list2\", elm.id)\r",
+											"    }\r",
+											"})\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/boards/{{id_board}}/lists?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{id_board}}",
+										"lists"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"The card was moved\", function() {\r",
+											"    pm.expect(body_response.idList).not.to.equal(pm.collectionVariables.get(\"card_idList_before_move\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let URL = pm.environment.get(\"base_url\") + \"/1/cards/\" + pm.collectionVariables.get(\"id_card\") + \"?key=\" + pm.environment.get(\"api_key\") + \"&token=\" + pm.environment.get(\"token\")\r",
+											"\r",
+											"pm.sendRequest({url : URL, method: [\"GET\"]} , (err, resp) => {\r",
+											"    if (err) {\r",
+											"        console.log(err)\r",
+											"    }\r",
+											"    else {\r",
+											"        body = resp.json()\r",
+											"        pm.collectionVariables.set(\"card_idList_before_move\", body.labels.length)\r",
+											"    }\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idList\":\"{{id_list2}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/1/cards/{{id_card}}?&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{id_card}}"
+									],
+									"query": [
+										{
+											"key": null,
+											"value": null
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 5 (move all cards to other list)",
+					"item": [
+						{
+							"name": "move all cards",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/lists/{{id_list}}/moveAllCards?idBoard={{id_board}}&idList={{id_list2}}&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{id_list}}",
+										"moveAllCards"
+									],
+									"query": [
+										{
+											"key": "idBoard",
+											"value": "{{id_board}}"
+										},
+										{
+											"key": "idList",
+											"value": "{{id_list2}}"
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "the list is empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"validate200OK(pm)\r",
+											"\r",
+											"pm.test(\"The body is empty\", function(){\r",
+											"    pm.expect(pm.response.text()).to.eql('{}')\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/cards/{{id_list}}/list?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{id_list}}",
+										"list"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 6 (archive all cards in a list)",
+					"item": [
+						{
+							"name": "create list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_list\",body_response.id)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"It's the correct name\", function() {\r",
+											"    pm.expect(extractName(body_response)).to.equal(pm.collectionVariables.get(\"name_2\"))\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/lists?name={{name_2}}&idBoard={{id_board}}&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"lists"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "{{name_2}}"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{id_board}}"
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_card\", body_response.id)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "{{name_1}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/1/cards?idList={{id_list}}&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"cards"
+									],
+									"query": [
+										{
+											"key": "idList",
+											"value": "{{id_list}}"
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_card2\", body_response.id)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "{{name_2}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/1/cards?idList={{id_list}}&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"cards"
+									],
+									"query": [
+										{
+											"key": "idList",
+											"value": "{{id_list}}"
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get cards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/cards/{{id_list}}/list?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{id_list}}",
+										"list"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "archive all cards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"validate200OK(pm)\r",
+											"\r",
+											"pm.test(\"The body is empty\", function(){\r",
+											"    pm.expect(pm.response.text()).to.eql('{}')\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/lists/{{id_list}}/archiveAllCards?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{id_list}}",
+										"archiveAllCards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 7 (archieve a list)",
+					"item": [
+						{
+							"name": "get lists",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"let list = body_response[0]\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_list_to_archive\", list.id)\r",
+											"pm.collectionVariables.set(\"length_before_archive\", body_response.length)\r",
+											"\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"The list is not archive\", function() {\r",
+											"    pm.expect(list.closed).to.be.false\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/boards/{{id_board}}/lists?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{id_board}}",
+										"lists"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "archieve list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"The list was archived\", function() {\r",
+											"    pm.expect(body_response.closed).to.be.true\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/1/lists/{{id_list_to_archive}}/?key={{api_key}}&token={{token}}&closed=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{id_list_to_archive}}",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "closed",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 8  (unarchive a list)",
+					"item": [
+						{
+							"name": "unarchieve list Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"The list was archived\", function() {\r",
+											"    pm.expect(body_response.closed).to.be.false\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/1/lists/{{id_list_to_archive}}/?key={{api_key}}&token={{token}}&closed=false",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{id_list_to_archive}}",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										},
+										{
+											"key": "closed",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 9 (delete card)",
+					"item": [
+						{
+							"name": "create card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"id_card\", body_response.id)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "{{name_1}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/1/cards?idList={{id_list}}&key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"cards"
+									],
+									"query": [
+										{
+											"key": "idList",
+											"value": "{{id_list}}"
+										},
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/cards/{{id_card}}?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{id_card}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "card doesn't exist",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"validate404NotFound(pm)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/cards/{{id_card}}?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{id_card}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC 10 (delete board)",
+					"item": [
+						{
+							"name": "get boards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"board_id\", body_response[0].id)\r",
+											"pm.collectionVariables.set(\"length_before_delete\", body_response.length)\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/members/me/boards?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"members",
+										"me",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete board",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/1/boards/{{board_id}}?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{board_id}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get boards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let body_response = pm.response.json()\r",
+											"\r",
+											"// Asserts\r",
+											"\r",
+											"validate200OK(pm)\r",
+											"validateBodyExist(pm)\r",
+											"validateIsAJson(pm)\r",
+											"\r",
+											"pm.test(\"One element was deleted\", function() {\r",
+											"    let length_int = parseInt(pm.collectionVariables.get(\"length_before_delete\")) - 1\r",
+											"    let actual_length = parseInt(body_response.length)\r",
+											"    pm.expect(length_int).to.equal(actual_length)\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/1/members/me/boards?key={{api_key}}&token={{token}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"1",
+										"members",
+										"me",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{api_key}}"
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"validate200OK = function (pm) {",
+					"    pm.test(\"Status code is 200\", function () {",
+					"        pm.response.to.have.status(200);",
+					"    });",
+					"}",
+					"",
+					"validate404NotFound = function (pm) {",
+					"    pm.test(\"Status code is 404\", function () {",
+					"        pm.response.to.have.status(404);",
+					"    });",
+					"}",
+					"",
+					"validateBodyExist = function (pm) {",
+					"    pm.test(\"Response has a body\", function () {",
+					"        pm.response.to.be.withBody",
+					"    })",
+					"}",
+					"",
+					"validateIsAJson = function (pm) {",
+					"    pm.test(\"Response is a Json\", function () {",
+					"        pm.response.to.be.json",
+					"    })",
+					"}",
+					"",
+					"extractID = function (body_response) {",
+					"    id = body_response.id",
+					"    return id",
+					"}",
+					"",
+					"extractName = function(body_response) {",
+					"    name = body_response.name",
+					"    return name",
+					"}",
+					"",
+					"let name_1 = \"Postman 1\"",
+					"",
+					"pm.collectionVariables.set(\"name_1\", name_1)",
+					"",
+					"let name_2 = \"Postman 2\"",
+					"",
+					"pm.collectionVariables.set(\"name_2\", name_2)",
+					"",
+					"let color_1 = \"purple\"",
+					"",
+					"pm.collectionVariables.set(\"color_1\", color_1)",
+					"",
+					"let color_2 = \"pink\"",
+					"",
+					"pm.collectionVariables.set(\"color_2\", color_2)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "name_1",
+			"value": ""
+		},
+		{
+			"key": "name_2",
+			"value": ""
+		},
+		{
+			"key": "color_1",
+			"value": ""
+		},
+		{
+			"key": "color_2",
+			"value": ""
+		},
+		{
+			"key": "board_id",
+			"value": ""
+		},
+		{
+			"key": "length_before_delete",
+			"value": ""
+		},
+		{
+			"key": "length_before_post",
+			"value": ""
+		},
+		{
+			"key": "id_board",
+			"value": ""
+		},
+		{
+			"key": "name_board_before_edit",
+			"value": ""
+		},
+		{
+			"key": "id_list",
+			"value": ""
+		},
+		{
+			"key": "id_card",
+			"value": ""
+		},
+		{
+			"key": "name_card_before_edit",
+			"value": ""
+		},
+		{
+			"key": "id_label",
+			"value": ""
+		},
+		{
+			"key": "labels_card_before_edit",
+			"value": ""
+		},
+		{
+			"key": "name_list_before_edit",
+			"value": ""
+		},
+		{
+			"key": "id_board_before_edit",
+			"value": ""
+		},
+		{
+			"key": "id_board2",
+			"value": ""
+		},
+		{
+			"key": "id_list2",
+			"value": ""
+		},
+		{
+			"key": "card_idList_before_move",
+			"value": ""
+		},
+		{
+			"key": "id_card2",
+			"value": ""
+		},
+		{
+			"key": "id_list_to_archive",
+			"value": ""
+		}
+	]
+}

@@ -25,7 +25,8 @@ namespace OpenCart.WebPages
         private IWebElement BtnCongAvanzada { get { return WebDriver.FindElementById("details-button"); } }
         private IWebElement BtnAccederOpenCart { get { return WebDriver.FindElementById("proceed-link"); } }
         private IWebElement Sponsor(string name) { return WebDriver.FindElementByXPath($"//img[@alt='{name}']"); }
-        private By _Sponsor(string name) { return By.XPath($"//img[@alt='{name}']"); } 
+        private IWebElement Carrousel { get { return WebDriver.FindElementById("slideshow0"); } }
+        private IWebElement Searcher { get { return WebDriver.FindElementById("search"); } }
 
 
         public HomePage SkipCertValidation()
@@ -35,10 +36,27 @@ namespace OpenCart.WebPages
             return this;
         }
 
-        public IWebElement GetSponsor(string sponsor)
+        public Boolean GetSponsor(string sponsor)
         {
-            return Sponsor(sponsor);           
+            try
+            {
+                Sponsor(sponsor);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
+        public IWebElement GetCarrousel()
+        {
+            return Carrousel;
+        }
+
+        public IWebElement GetSearcher()
+        {
+            return Searcher;
+        }
     }
 }

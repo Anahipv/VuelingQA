@@ -17,7 +17,23 @@ namespace OpenCart.Tests
         {
             HomePage homePage = new HomePage(setUpWebDriver);
             homePage.SkipCertValidation();
-            Assert.True(homePage.GetSponsor("Nintendo").Displayed, "This sponsor doesn't exist");
+            Assert.AreEqual(homePage.GetSponsor("Nintendo"), true);
+        }
+
+        [TestCase()]
+        public void CarrouselExist()
+        {
+            HomePage homePage = new HomePage(setUpWebDriver);
+            homePage.SkipCertValidation();
+            Assert.True(homePage.GetCarrousel().Displayed , "The home page didn't load well");
+        }
+
+        [TestCase()]
+        public void SearcherExist()
+        {
+            HomePage homePage = new HomePage(setUpWebDriver);
+            homePage.SkipCertValidation();
+            Assert.True(homePage.GetSearcher().Displayed, "The home page didn't load well");
         }
     }
 }

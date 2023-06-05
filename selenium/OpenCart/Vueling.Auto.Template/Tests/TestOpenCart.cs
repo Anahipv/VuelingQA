@@ -50,7 +50,7 @@ namespace OpenCart.Tests
             desktopsPage.AddProductToCart(product);
             NavBarPage navBarPage = new NavBarPage(setUpWebDriver);
             navBarPage.ClickDropDownCart();
-            Assert.AreEqual(navBarPage.GetContentCart().Text, "Your shopping cart is empty!");
+            Assert.AreEqual(navBarPage.GetContentCartEmpty().Text, "Your shopping cart is empty!");
         }
 
         [TestCase()]
@@ -75,14 +75,6 @@ namespace OpenCart.Tests
         {
             string category = "Tablets";
             string[] data_login = { "aaaa@bbb.com", "aaabbb" };
-            string name = "aaa";
-            string last_name = "bbb";
-            string adress = Helpers.GetRandomString(8);
-            string city = Helpers.GetRandomString(5);
-            string post_code = Helpers.GetRandomString(8);
-            string country = "Argentina";
-            string region = "Buenos Aires";
-            string[] data_billing_details = { name, last_name, adress, city, post_code, country, region };
 
             HomePage homePage = new HomePage(setUpWebDriver);
             homePage.SkipCertValidation();
@@ -91,7 +83,6 @@ namespace OpenCart.Tests
             TabletsPage tabletsPage = new TabletsPage(setUpWebDriver);
             Assert.AreEqual(tabletsPage.GetTitle().Text, category);
             string product_name = tabletsPage.SelectFirstProduct();
-            Console.WriteLine(product_name);
             string product_price = tabletsPage.GetPrice().Text;
             tabletsPage.AddProductToCart(product_name);
             NavBarPage navBarPage = new NavBarPage(setUpWebDriver);
@@ -111,6 +102,45 @@ namespace OpenCart.Tests
             checkOutPage.ConfirmOrder();
             Assert.IsTrue(checkOutPage.OrderSuccessfull().Displayed, "The oreder wasn't successfull");
         }
-       
+
+        [TestCase()]
+        public void BuyRandomPhone_WithoutPreviuosRegister_Test()
+        {
+            string category = "Phones & PDAs";
+            string name = Helpers.GenerateFirstName(5);
+            string last_name = Helpers.GenerateLastName(5);
+            string email = name + "@mail.com";
+            string telephone = Helpers.GetRandomPhoneNumber().ToString();
+            string password = Helpers.GetRandomString(8);
+            string adress = Helpers.GetRandomString(8);
+            string city = Helpers.GetRandomString(5);
+            string post_code = Helpers.GetRandomString(8);
+            string country = "Argentina";
+            string region = "Buenos Aires";
+            string[] data_register = { name, last_name, email, telephone, password, password, adress, city, post_code, country, region };
+
+            HomePage homePage = new HomePage(setUpWebDriver);
+            homePage.SkipCertValidation();
+            CategoriesPage categoriesPage = new CategoriesPage(setUpWebDriver);
+            categoriesPage.ClickCategory(category);
+            PhonesPage phonesPage = new PhonesPage(setUpWebDriver);
+            Assert.AreEqual(phonesPage.GetTitle().Text, category);
+            string product_name = phonesPage.SelectRandomProduct();
+            string product_price = phonesPage.GetPrice().Text;
+            phonesPage.AddProductToCart(product_name);
+            NavBarPage navBarPage = new NavBarPage(setUpWebDriver);
+            navBarPage.ClickDropDownCart();
+            Assert.True(navBarPage.GetContentCart(product_name).Displayed, $"Don't appear a product with this price: {product_name}");
+            navBarPage.GoCheckOut();
+            CheckOutPage checkOutPage = new CheckOutPage(setUpWebDriver);
+            Assert.AreEqual(checkOutPage.GetTitle().Text, "Checkout");
+            checkOutPage.StepBillingDetailsAndNewAccount(data_register);
+            checkOutPage.StepDeliveryDetails();
+            checkOutPage.StepDeliveryMethod();
+            checkOutPage.StepPaymentMethodBankTransfer();
+            checkOutPage.ConfirmOrder();
+            Assert.IsTrue(checkOutPage.OrderSuccessfull().Displayed, "The oreder wasn't successfull");
+        }
+
     }
 }

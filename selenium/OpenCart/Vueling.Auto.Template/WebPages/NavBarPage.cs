@@ -23,7 +23,9 @@ namespace OpenCart.WebPages
         private IWebElement BtnRegister { get { return WebDriver.FindElementByXPath("//a[text()='Register']"); } }
         private IWebElement BtnLogIn { get { return WebDriver.FindElementByXPath("//a[text()='Login']"); } }
         private IWebElement BtnLogOut { get { return WebDriver.FindElementByXPath("//a[text()='Logout']"); } }
-        private IWebElement DropDownContent { get { return WebDriver.FindElementByXPath("//ul[@class='dropdown-menu pull-right']//p"); } }
+        private IWebElement DropDownContentEmpty { get { return WebDriver.FindElementByXPath("//ul[@class='dropdown-menu pull-right']//p"); } }
+        private IWebElement DropDownContent(string name_product) { return WebDriver.FindElementByXPath($"//ul[@class='dropdown-menu pull-right']//a[text()='{name_product}']"); }
+        private IWebElement BtnCheckOut { get { return WebDriver.FindElementByXPath("//a[@href='https://opencart.abstracta.us:443/index.php?route=checkout/checkout']"); } }
 
 
         public NavBarPage GoToRegister()
@@ -57,9 +59,20 @@ namespace OpenCart.WebPages
             return this;
         }
 
-        public IWebElement GetContentCart()
+        public IWebElement GetContentCartEmpty()
         {
-            return DropDownContent;
+            return DropDownContentEmpty;
+        }
+
+        public IWebElement GetContentCart(string name_product)
+        {
+            return DropDownContent(name_product);
+        }
+
+        public NavBarPage GoCheckOut()
+        {
+            BtnCheckOut.Click();
+            return this;
         }
     }
 }

@@ -18,18 +18,18 @@ namespace OpenCart.WebPages
 
         private IWebElement ElementsFormBillingDetails(string id_element) { return WebDriver.FindElementById(id_element); }
         private IWebElement BtnContinueBillingDetails { get { return WebDriver.FindElementById("button-payment-address"); } }
-
+        private IWebElement BtnRegister { get { return WebDriver.FindElementById("button-account"); } }
+        private IWebElement BtnConfirmNewAccount { get { return WebDriver.FindElementById("button-register"); } }
         private IWebElement BtnNewAdress { get { return WebDriver.FindElementByXPath("//input[@name='payment_address']"); } }
         private IWebElement BtnContinueDeliveryDetails { get { return WebDriver.FindElementById("button-shipping-address"); } }
-        //private IWebElement BtnContinueShippingDetails { get { return WebDriver.FindElementByXPath("//div[@class='pull-right']"); } }
         private IWebElement BtnContinueDeliveryMethod { get { return WebDriver.FindElementById("button-shipping-method"); } }
         private IWebElement BtnContinuePaymenMethod { get { return WebDriver.FindElementById("button-payment-method"); } }
         private IWebElement BtnConfirmOrder { get { return WebDriver.FindElementById("button-confirm"); } }
-        private IWebElement BtnAgreePaymentMethod { get { return WebDriver.FindElementByXPath("//input[@name='agree']"); } }
+        private IWebElement BtnAgree { get { return WebDriver.FindElementByXPath("//input[@name='agree']"); } }
         private IWebElement TitleCkeckOut { get { return WebDriver.FindElementByXPath("//h1[text()='Checkout']"); } }
         private IWebElement TtileOrderSuccessfull { get { return WebDriver.FindElementByXPath("//h1[text()='Your order has been placed!']"); } }
-        private IWebElement OptionsCountry(string country) { return WebDriver.FindElementByXPath($"//option[text()={country}]"); }
-        private IWebElement OptionsRegion(string region) { return WebDriver.FindElementByXPath($"//option[text()={region}]"); }
+        private IWebElement OptionsCountry(string country) { return WebDriver.FindElementByXPath($"//option[text()='{country}']"); }
+        private IWebElement OptionsRegion(string region) { return WebDriver.FindElementByXPath($"//option[text()='{region}']"); }
 
         private By _InputAdress { get { return By.Id("payment-existing"); } }
 
@@ -65,6 +65,25 @@ namespace OpenCart.WebPages
             return this;
         }
 
+        private CheckOutPage FillFormBillingDetailsAndNewAccount(string[] data)
+        {
+            string[] inputs = { "input-payment-firstname", "input-payment-lastname", "input-payment-email", "input-payment-telephone", "input-payment-password", "input-payment-confirm", "input-payment-address-1", "input-payment-city", "input-payment-postcode" };
+            int i = 0;
+            foreach (var input in inputs)
+            {
+                ElementsFormBillingDetails(input).SendKeys(data[i]);
+                i++;
+            }
+
+            ElementsFormBillingDetails("input-payment-country").Click();
+            OptionsCountry(data[i]).Click();
+            i++;
+            ElementsFormBillingDetails("input-payment-zone").Click();
+            OptionsRegion(data[i]).Click();
+
+            return this;
+        }
+
         public CheckOutPage StepBillingDetailsWithNewAddress(string[] data)
         {
             BtnNewAdress.Click();
@@ -76,6 +95,15 @@ namespace OpenCart.WebPages
         public CheckOutPage StepBillingDetails()
         {
             BtnContinueBillingDetails.Click();
+            return this;
+        }
+
+        public CheckOutPage StepBillingDetailsAndNewAccount(string[] data)
+        {
+            BtnRegister.Click();
+            FillFormBillingDetailsAndNewAccount(data);
+            BtnAgree.Click();
+            BtnConfirmNewAccount.Click();
             return this;
         }
 
@@ -96,7 +124,7 @@ namespace OpenCart.WebPages
 
         public CheckOutPage StepPaymentMethodBankTransfer()
         {
-            BtnAgreePaymentMethod.Click();
+            BtnAgree.Click();
             BtnContinuePaymenMethod.Click();
             return this;
         }

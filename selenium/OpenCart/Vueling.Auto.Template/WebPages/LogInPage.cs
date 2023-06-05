@@ -20,7 +20,6 @@ namespace OpenCart.WebPages
         public LogInPage(ISetUpWebDriver setUpWebDriver) : base(setUpWebDriver) { }
 
         protected override IWebElement ApartadosBusqueda => throw new NotImplementedException();
-
         private IWebElement ElementsForm(string id_element) { return WebDriver.FindElementById($"{id_element}"); }
         private By _DivLogIn { get { return By.XPath("//h2[text()='Returning Customer']"); } }
         private IWebElement DivLogIn { get { return WebDriver.FindElementByXPath("//h2[text()='Returning Customer']"); } }

@@ -24,6 +24,8 @@ namespace OpenCart.WebPages
 
         private IWebElement BtnCongAvanzada { get { return WebDriver.FindElementById("details-button"); } }
         private IWebElement BtnAccederOpenCart { get { return WebDriver.FindElementById("proceed-link"); } }
+        private IWebElement Sponsor(string name) { return WebDriver.FindElementByXPath($"//img[@alt='{name}']"); }
+        private By _Sponsor(string name) { return By.XPath($"//img[@alt='{name}']"); } 
 
 
         public HomePage SkipCertValidation()
@@ -31,6 +33,11 @@ namespace OpenCart.WebPages
             BtnCongAvanzada.Click();
             BtnAccederOpenCart.Click();
             return this;
+        }
+
+        public IWebElement GetSponsor(string sponsor)
+        {
+            return Sponsor(sponsor);           
         }
 
     }

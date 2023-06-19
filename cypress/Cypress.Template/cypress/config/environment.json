@@ -1,0 +1,6 @@
+{
+    "baseUrl": "https://www.demoblaze.com/",
+    "env": {
+        "variable" : "here you can set the environment variables"
+    }
+}

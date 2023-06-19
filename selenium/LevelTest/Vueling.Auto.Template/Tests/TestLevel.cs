@@ -18,9 +18,8 @@ namespace Level.Template.Tests
         {
             LevelHomePage levelHomePage = new LevelHomePage(setUpWebDriver);
             levelHomePage.CloseCookies();
-            Thread.Sleep(1000);
+            Assert.True(levelHomePage.GetSearcher().Displayed, "The searcher doesn't appear");
             levelHomePage.SelectOrigin("Barcelona");
-            Thread.Sleep(1000);
             levelHomePage.SelectDestination("Buenos Aires");
             levelHomePage.SelectDateOrigin("06/06/2023");
             levelHomePage.SelectDateDestination("10/06/2023");

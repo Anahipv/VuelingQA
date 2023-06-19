@@ -24,44 +24,34 @@ namespace Level.Template.WebPages
         protected override IWebElement ApartadosBusqueda => throw new NotImplementedException();
 
         private IWebElement BtnSubmitSearch { get { return WebDriver.FindElementById("searcher_submit_buttons"); } }
-
+        private IWebElement Searcher { get { return WebDriver.FindElementById("searcher-block"); } }
+        private IWebElement ListOfDestination { get { return WebDriver.FindElementByClassName("list-items origin js-list-items"); } }
+        private By _ListOfOrigin { get { return By.XPath("//dev[@class='list-items origin js-list-items']"); } }
+        private By _ListOfDestination { get { return By.ClassName("list-items destination js-list-items"); } }
         private IWebElement Origin { get { return WebDriver.FindElementByCssSelector("div[data-field='origin']"); } }
-
         private IWebElement Destination { get { return WebDriver.FindElementByCssSelector("div[data-field='destination']"); } }
-
         private IWebElement Date(string date) { return WebDriver.FindElementByCssSelector("div[data-time='" + date + "']"); }
-
         private IWebElement SelectCity(string city, int i) { return WebDriver.FindElementByXPath("(//div[@class='city' and text()='" + city + "'])[" + i + "]"); }
-
-        private IWebElement InputDepartureDate { get { return WebDriver.FindElementByXPath("(//div[@class='departure-date']/p[@class='input-value' and @data-placeholder='Elige una fecha'])[1]"); } }
-        
+        private IWebElement InputDepartureDate { get { return WebDriver.FindElementByXPath("(//div[@class='departure-date']/p[@class='input-value' and @data-placeholder='Elige una fecha'])[1]"); } }      
         private IWebElement InputReturnDate { get { return WebDriver.FindElementByXPath("//div[@class='searcher-input arrival-date-input js-arrival-date col s6 focused']/p[@class = 'input-value placeholder']"); } }
-
         private IWebElement BtnConfirmPax { get { return WebDriver.FindElementByXPath("//div[@class='pax-selector-footer pax-selector-filter']/button"); } }
-
         private IWebElement BtnDropDownTrip { get { return WebDriver.FindElementByXPath("//a[@data-target='dropdown-trip']"); } }
-
         private IWebElement BtnOW { get { return WebDriver.FindElementByXPath("//a[@value='OW']"); } }
-
         private IWebElement BtnDropDownPax { get { return WebDriver.FindElementByXPath("//div[@data-type='paxes' and @role='button']"); } }
-
         private IWebElement BtnAddPax(string pax) { return WebDriver.FindElementByXPath("" +
             //"//div[@data-field='" + pax + "']//span[@class='icon-plus pax-icon']"
-            "//div[@data-field='" + pax + "']//div[@class='js-plus']"
-            ); }
-
+            "//div[@data-field='" + pax + "']//div[@class='js-plus']"); }
         private IWebElement BtnNextMonth { get { return WebDriver.FindElementByXPath("//button[@class='datepicker__next-action js-month-change']"); } }
-
         private IWebElement MonthTitle { get { return WebDriver.FindElementByXPath("(//div[@class='datepicker__month-title']/span[@class='month'])[1]"); } }
-
         private IWebElement FirstDayAvailable { get { return WebDriver.FindElementByXPath("((//div[@class='datepicker__months']/section[1]//div[@class='datepicker__day is-available '])[1])"); } }
-
         private IWebElement Day(string day) { return WebDriver.FindElementByXPath("//div[@class='day' and text()='" + day + "']"); }
+
 
         public LevelHomePage SelectOrigin(string city_origin)
         {
             Origin.Click();
-            Thread.Sleep(1000);
+            //new WebDriverWait(WebDriver, TimeSpan.FromSeconds(WaitTimeout))
+            //.Until(CustomExpectedConditions.ElementIsVisible(_ListOfOrigin));
             SelectCity(city_origin, 1).Click();
             return this;
         }
@@ -69,7 +59,8 @@ namespace Level.Template.WebPages
         public LevelHomePage SelectDestination(string city_detination)
         {
             Destination.Click();
-            Thread.Sleep(1000);
+            //new WebDriverWait(WebDriver, TimeSpan.FromSeconds(WaitTimeout))
+            //.Until(CustomExpectedConditions.ElementIsVisible(_ListOfDestination));
             SelectCity(city_detination, 2).Click();
             return this;
         }
@@ -158,6 +149,11 @@ namespace Level.Template.WebPages
             string return_day_str = return_day.ToString();
             Day(return_day_str).Click();
             return this;  
+        }
+
+        public IWebElement GetSearcher()
+        {
+            return Searcher;
         }
     }
 }

@@ -6,25 +6,25 @@ export class VuelingHomePage {
     btnAcceptCookies = () => cy.getId("onetrust-accept-btn-handler");
 
     searcher = {
-        inputCities : (direction) => cy.getId(`${direction}Input`),
-        listCities : () => cy.get(".liStation"),
-        airportSelected : (direction) => cy.get(`.${direction} .prefix`),
-        btnSubmit : () => cy.getId("btnSubmitHomeSearcher")
+        inputCities : (direction) => cy.getId(`AvailabilitySearchInputSearchView_TextBoxMarket${direction}1`),
+        listCities : () => cy.getId("stationsList"),
+        btnSubmit : () => cy.getId("AvailabilitySearchInputSearchView_btnClickToSearchNormal"),
+        btnOw : () => cy.getId("AvailabilitySearchInputSearchView_OneWay")
     }
 
     datepicker = {
-        checkOW : () => cy.get("#onewayList .radio-circle_inner"),
+        div : () => cy.getId("ui-datepicker-div"),
         month : () => cy.get(".ui-datepicker-month"),
-        btnNextMonth : () => cy.getId("nextButtonCalendar"),
-        dayAvailable : () => cy.get("#calendarDaysTable [aria-disabled='false']")
+        btnNextMonth : () => cy.get("[data-handler='next']"),
+        dayAvailable : () => cy.get("[data-handler='selectDay']")
     }
 
     paxMenu = {
-        dropDown : () => cy.getId("passengersInputLabel"),
-        btnAddPax : (pax) => cy.getId(`${pax}Increase`),
-        containerPax : () => cy.get(".passengers-popup_main"),
-        paxCount : () => cy.get(".number"),
-        btnAcceptINF : () => cy.get("[title='Aceptar']")
+        btnAddADT : (cant) => cy.getId(`DropDownListPassengerType_ADT_${cant}`),
+        dropDownADT : () => cy.getId("adtSelectorDropdown"),
+        listAddADT: (cant) => cy.get(`#adtSelectorDropdown [value='${cant}']`),
+        dropDownCHDandINF : (pax_type) => cy.getId(`container_AvailabilitySearchInputSearchView_DropDownListPassengerType_${pax_type}`),
+        listAddCHDandINF : (pax_type, cant) => cy.get(`#AvailabilitySearchInputSearchView_DropDownListPassengerType_${pax_type} [value='${cant}']`),
     }
 
     // Functions
@@ -37,11 +37,10 @@ export class VuelingHomePage {
         this.searcher.inputCities(direction).click();
         this.searcher.inputCities(direction).type(airport);
         this.searcher.listCities().should('be.visible').click();
-        this.searcher.airportSelected(direction).should('have.text', airport);
     }
 
     SelectOW() {
-        this.datepicker.checkOW().click({force: true});
+        this.searcher.btnOw().click();
     }
 
     SelectMonth(month) {
@@ -58,41 +57,23 @@ export class VuelingHomePage {
         this.datepicker.dayAvailable().first().click();
     }
 
+    AddADT(cant) {
+        this.paxMenu.btnAddADT(cant).click();
+    }
+
     AddPax(pax, number) {
         switch (pax) {
-            case 'adults':
-                this.paxMenu.paxCount().first().then((paxElement) => {
-                    const paxNumber = paxElement.text();
-              
-                      if (paxNumber !== number) {
-                        this.paxMenu.btnAddPax(pax).click();
-                        this.AddPax(pax, number);
-                      }
-                  });
+            case 'ADT':
+                this.paxMenu.dropDownADT().click();
+                this.paxMenu.listAddADT(number).click();
                 break;
-            case 'children':
-                this.paxMenu.paxCount().eq(1).then((paxElement) => {
-                    const paxNumber = paxElement.text();
-              
-                      if (paxNumber !== number) {
-                        this.paxMenu.btnAddPax(pax).click();
-                        this.AddPax(pax, number);
-                      }
-                  });
+            case 'CHD':
+                this.paxMenu.dropDownCHDandINF(paxEnum.Child).click();
+                this.paxMenu.listAddCHDandINF(paxEnum.Child, number).click();
                 break; 
-            case 'infants':
-                this.paxMenu.paxCount().eq(2).then((paxElement) => {
-                    const paxNumber = paxElement.text();
-              
-                      if (paxNumber !== number) {
-                        this.paxMenu.btnAddPax(pax).click();
-                        this.AddPax(pax, number);
-                      }
-                      if (paxNumber == "1") {
-                        this.paxMenu.btnAcceptINF().should('be.visible').click();
-                      }
-                  });
-                //this.paxMenu.btnAcceptINF().should('be.visible').click();
+            case 'INFANT':
+                this.paxMenu.dropDownCHDandINF(paxEnum.Infant).click();
+                this.paxMenu.listAddCHDandINF(paxEnum.Infant, number).click();
                 break; 
             default:
                 cy.log('La referencia de pasajero es incorrecta');                                  
@@ -100,13 +81,9 @@ export class VuelingHomePage {
     }
 
     selectPax(numAdults, numChilds, numInfants) {
-        this.paxMenu.dropDown().click();
         this.AddPax(paxEnum.Adult, numAdults);
-        this.paxMenu.paxCount().first().should("have.text", numAdults);
         this.AddPax(paxEnum.Child, numChilds);
-        this.paxMenu.paxCount().eq(1).should("have.text", numChilds);
         this.AddPax(paxEnum.Infant, numInfants);
-        this.paxMenu.paxCount().eq(2).should("have.text", numInfants);
     }
 
     SubmitSearcher() {

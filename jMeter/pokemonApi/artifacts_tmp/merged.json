@@ -1,0 +1,68 @@
+{
+ "settings": {
+  "artifacts-dir": "C:\\Users\\Holacons\\source\\VuelingQA\\jMeter\\pokemonApi\\artifacts_tmp",
+  "env": {
+   "BASE_DIR": "C:\\Users\\Holacons\\source\\VuelingQA\\jMeter\\pokemonApi"
+  }
+ },
+ "services": [
+  {
+   "module": "shellexec",
+   "post-process": [
+    "mkdir ${BASE_DIR}\\HTML",
+    "jmeter -g ${BASE_DIR}\\Results.csv -o ${BASE_DIR}\\HTML"
+   ]
+  }
+ ],
+ "execution": [
+  {
+   "executor": "jmeter",
+   "scenario": "smoke"
+  }
+ ],
+ "scenarios": {
+  "smoke": {
+   "script": "${BASE_DIR}\\PokemonApi.jmx",
+   "variables": {
+    "Url": "pokeapi.co",
+    "Protocol": "https",
+    "ResultsPath": "${BASE_DIR}\\Results.csv",
+    "ErrorsPath": "${BASE_DIR}\\Errors.csv",
+    "TestDuration": 30,
+    "RampUp": 0,
+    "Threads": 5,
+    "Rpm": 0
+   }
+  },
+  "load": {
+   "script": "${BASE_DIR}\\PokemonApi.jmx",
+   "variables": {
+    "Url": "pokeapi.co",
+    "Protocol": "https",
+    "ResultsPath": "${BASE_DIR}\\Results.csv",
+    "ErrorsPath": "${BASE_DIR}\\Errors.csv",
+    "TestDuration": 60,
+    "RampUp": 0,
+    "Threads": 5,
+    "Rpm": 0
+   }
+  }
+ },
+ "reporting": [
+  {
+   "module": "final-stats",
+   "summary": true,
+   "percentiles": true,
+   "failed-labels": false,
+   "test-duration": true
+  },
+  {
+   "module": "blazemeter",
+   "report-name": "Taurus test report - Demo",
+   "test": "Taurus test",
+   "project": "Taurus test project"
+  }
+ ],
+ "testName": null,
+ "baseUrl": null
+}

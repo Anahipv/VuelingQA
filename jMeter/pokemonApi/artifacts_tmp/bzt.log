@@ -1,0 +1,338 @@
+[2023-06-22 13:32:44,672 INFO root] Taurus CLI Tool v1.16.23
+[2023-06-22 13:32:44,688 DEBUG root] Build: 14504 Wed May 24 10:40:08 UTC 2023
+[2023-06-22 13:32:44,688 DEBUG root] Extended git info:  5902bf48 Changelog 1.16.23
+[2023-06-22 13:32:44,688 DEBUG root] Command-line options: {'log': 'C:\\Users\\Holacons\\AppData\\Local\\Temp\\bzt_3oid2b6h.log', 'option': None, 'quiet': None, 'verbose': None, 'no_system_configs': None, 'aliases': []}
+[2023-06-22 13:32:44,688 DEBUG root] Python: CPython 3.11.3
+[2023-06-22 13:32:44,688 DEBUG root] OS: uname_result(system='Windows', node='anahiP-SBT6U05', release='10', version='10.0.22621', machine='AMD64')
+[2023-06-22 13:32:44,694 DEBUG root] Path to interpreter: C:\Users\Holacons\AppData\Local\Programs\Python\Python311\python.exe
+[2023-06-22 13:32:44,694 DEBUG root] Path to packages: ['C:\\Users\\Holacons\\source\\VuelingQA\\jMeter\\pokemonApi', 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages']
+[2023-06-22 13:32:44,694 DEBUG root] Default python: C:\Users\Holacons\AppData\Local\Programs\Python\Python311\python.EXE
+[2023-06-22 13:32:44,694 DEBUG root] Default python3: None
+[2023-06-22 13:32:44,694 DEBUG root] Using personal config: C:\Users\Holacons\.bzt-rc
+[2023-06-22 13:32:44,694 INFO root] Starting with configs: ['C:\\Users\\Holacons\\.bzt-rc', 'test.yaml']
+[2023-06-22 13:32:44,694 INFO Engine] Configuring...
+[2023-06-22 13:32:44,704 DEBUG Engine] Base configs list: ['C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\bzt\\resources/10-base-config.yml']
+[2023-06-22 13:32:44,704 DEBUG Engine.Configuration] Configs: ['C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\bzt\\resources/10-base-config.yml']
+[2023-06-22 13:32:44,704 DEBUG Engine.Configuration] Reading C:\Users\Holacons\AppData\Local\Programs\Python\Python311\Lib\site-packages\bzt\resources/10-base-config.yml as YAML
+[2023-06-22 13:32:44,721 DEBUG Engine] User configs list: ['C:\\Users\\Holacons\\.bzt-rc', 'test.yaml']
+[2023-06-22 13:32:44,721 DEBUG Engine.Configuration] Configs: ['C:\\Users\\Holacons\\.bzt-rc', 'test.yaml']
+[2023-06-22 13:32:44,721 DEBUG Engine.Configuration] Reading C:\Users\Holacons\.bzt-rc as YAML
+[2023-06-22 13:32:44,721 DEBUG Engine.Configuration] Reading test.yaml as YAML
+[2023-06-22 13:32:44,721 DEBUG Engine.Configuration] Configs: ['C:\\Users\\Holacons\\.bzt-rc', 'test.yaml']
+[2023-06-22 13:32:44,721 DEBUG Engine.Configuration] Reading C:\Users\Holacons\.bzt-rc as YAML
+[2023-06-22 13:32:44,721 DEBUG Engine.Configuration] Reading test.yaml as YAML
+[2023-06-22 13:32:44,721 INFO HTTPClient] Proxy settings not set
+[2023-06-22 13:32:44,721 DEBUG Engine] Requesting updates info: https://gettaurus.org/updates/?version=1.16.23&installID=windows-90ffe0001
+[2023-06-22 13:32:44,721 INFO Engine] Artifacts dir: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp
+[2023-06-22 13:32:44,721 DEBUG HTTPClient] Making HTTP request GET https://gettaurus.org/updates/?version=1.16.23&installID=windows-90ffe0001
+[2023-06-22 13:32:44,721 DEBUG Engine] New artifact filename: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective
+[2023-06-22 13:32:44,736 DEBUG urllib3.connectionpool] Starting new HTTPS connection (1): gettaurus.org:443
+[2023-06-22 13:32:44,736 DEBUG Engine.Configuration] Dumping YAML config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective.yml
+[2023-06-22 13:32:44,743 DEBUG Engine.Configuration] Dumping JSON config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective.json
+[2023-06-22 13:32:44,743 DEBUG Engine] New artifact filename: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\merged.yml
+[2023-06-22 13:32:44,743 DEBUG Engine.Configuration] Dumping YAML config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\merged.yml
+[2023-06-22 13:32:44,743 DEBUG Engine] New artifact filename: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\merged.json
+[2023-06-22 13:32:44,743 DEBUG Engine.Configuration] Dumping JSON config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\merged.json
+[2023-06-22 13:32:44,743 DEBUG Engine] Add existing artifact (move=False): C:\Users\Holacons\.bzt-rc
+[2023-06-22 13:32:44,743 DEBUG Engine] Copying C:\Users\Holacons\.bzt-rc to C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\.bzt-rc
+[2023-06-22 13:32:44,748 DEBUG Engine] Add existing artifact (move=False): test.yaml
+[2023-06-22 13:32:44,748 DEBUG Engine] Copying test.yaml to C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\test.yaml
+[2023-06-22 13:32:44,748 DEBUG Engine] Set PYTHONPATH to :
+	CURRENT: '' +
+	TEMP: 'C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\python-packages\3.11.3' +
+	USER: 'C:\Users\Holacons\.bzt\python-packages\3.11.3'
+[2023-06-22 13:32:44,748 DEBUG Engine] Content of user packages dir: []
+[2023-06-22 13:32:44,748 DEBUG Engine] OS env: OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+[2023-06-22 13:32:44,748 DEBUG Engine] OS env: BASE_DIR=C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi
+[2023-06-22 13:32:44,748 DEBUG Engine] OS env: TAURUS_ARTIFACTS_DIR=C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp
+[2023-06-22 13:32:44,748 DEBUG root] Closing log handler: C:\Users\Holacons\AppData\Local\Temp\bzt_3oid2b6h.log
+[2023-06-22 13:32:44,752 DEBUG root] Switched writing logs to C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\bzt.log
+[2023-06-22 13:32:44,752 DEBUG root] Linting config
+[2023-06-22 13:32:44,752 INFO Engine] Preparing...
+[2023-06-22 13:32:44,752 DEBUG Engine] Module config: consolidator {'class': 'bzt.modules.aggregator.ConsolidatingAggregator'}
+[2023-06-22 13:32:44,752 DEBUG root] Importing module: bzt.modules.aggregator
+[2023-06-22 13:32:44,851 DEBUG root] Loading class: 'ConsolidatingAggregator' from <module 'bzt.modules.aggregator' from 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\bzt\\modules\\aggregator.py'>
+[2023-06-22 13:32:44,851 DEBUG Engine.consolidator] Buffer scaling setup: percentile 95.0 from [0.0, 50.0, 90.0, 95.0, 99.0, 99.9, 100.0] selected
+[2023-06-22 13:32:44,851 DEBUG Engine] Module config: monitoring {'class': 'bzt.modules.monitoring.Monitoring'}
+[2023-06-22 13:32:44,851 DEBUG root] Importing module: bzt.modules.monitoring
+[2023-06-22 13:32:44,851 DEBUG root] Loading class: 'Monitoring' from <module 'bzt.modules.monitoring' from 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\bzt\\modules\\monitoring.py'>
+[2023-06-22 13:32:44,851 DEBUG Engine] Module config: shellexec {'class': 'bzt.modules.shellexec.ShellExecutor'}
+[2023-06-22 13:32:44,851 DEBUG root] Importing module: bzt.modules.shellexec
+[2023-06-22 13:32:44,851 DEBUG root] Loading class: 'ShellExecutor' from <module 'bzt.modules.shellexec' from 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\bzt\\modules\\shellexec.py'>
+[2023-06-22 13:32:44,851 DEBUG Engine.shellexec] Added post-process task: {'command': 'mkdir C:\\Users\\Holacons\\source\\VuelingQA\\jMeter\\pokemonApi\\HTML'}
+[2023-06-22 13:32:44,851 DEBUG Engine.shellexec] Added post-process task: {'command': 'jmeter -g C:\\Users\\Holacons\\source\\VuelingQA\\jMeter\\pokemonApi\\Results.csv -o C:\\Users\\Holacons\\source\\VuelingQA\\jMeter\\pokemonApi\\HTML'}
+[2023-06-22 13:32:44,851 DEBUG Engine] Module config: local {'class': 'bzt.modules.provisioning.Local'}
+[2023-06-22 13:32:44,851 DEBUG root] Importing module: bzt.modules.provisioning
+[2023-06-22 13:32:44,851 DEBUG root] Loading class: 'Local' from <module 'bzt.modules.provisioning' from 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\bzt\\modules\\provisioning.py'>
+[2023-06-22 13:32:44,851 DEBUG Engine] Module config: jmeter {'class': 'bzt.modules.jmeter.JMeterExecutor', 'protocol-handlers': {'http': 'bzt.jmx.http.HTTPProtocolHandler', 'mqtt': 'bzt.jmx.mqtt.MQTTProtocolHandler', 'grpc': 'bzt.jmx.grpc.GRPCProtocolHandler'}, 'plugins': ['jpgc-casutg', 'jpgc-dummy', 'jpgc-ffw', 'jpgc-fifo', 'jpgc-functions', 'jpgc-json', 'jpgc-perfmon', 'jpgc-prmctl', 'jpgc-tst'], 'properties': {'jmeter.save.saveservice.autoflush': 'true', 'jmeter.save.saveservice.connect_time': 'true', 'jmeterengine.force.system.exit': 'true', 'summariser.name': ''}}
+[2023-06-22 13:32:44,851 DEBUG root] Importing module: bzt.modules.jmeter
+[2023-06-22 13:32:44,864 DEBUG root] Loading class: 'JMeterExecutor' from <module 'bzt.modules.jmeter' from 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\bzt\\modules\\jmeter.py'>
+[2023-06-22 13:32:44,864 DEBUG Engine.local] Preparing executor: jmeter/1772411403792
+[2023-06-22 13:32:44,864 DEBUG Engine] New artifact filename: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\jmeter.log
+[2023-06-22 13:32:44,864 DEBUG Engine.jmeter] Checking if port 4445 is free
+[2023-06-22 13:32:44,864 DEBUG Engine.jmeter] Port 4445 is free
+[2023-06-22 13:32:44,864 DEBUG Engine.jmeter] Using port 4445 for management
+[2023-06-22 13:32:44,864 DEBUG Engine.jmeter] Getting Jmeter version.
+[2023-06-22 13:32:44,864 DEBUG Engine.jmeter] Autodetect version is enabled
+[2023-06-22 13:32:44,864 DEBUG Engine.jmeter] JMeter version: 5.4.3
+[2023-06-22 13:32:44,864 DEBUG Engine.jmeter] Additional properties: {'jmeter.save.saveservice.autoflush': 'true', 'jmeter.save.saveservice.connect_time': 'true', 'jmeterengine.force.system.exit': 'true', 'summariser.name': '', 'jmeterengine.nongui.port': 4445, 'jmeterengine.nongui.maxport': 4445, 'jmeter.save.saveservice.timestamp_format': 'ms', 'sampleresult.default.encoding': 'UTF-8', 'user.classpath': 'C:/Users/Holacons/source/VuelingQA/jMeter/pokemonApi/artifacts_tmp;C:/Users/Holacons/source/VuelingQA/jMeter/pokemonApi'}
+[2023-06-22 13:32:44,864 DEBUG Engine] New artifact filename: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\jmeter-bzt.properties
+[2023-06-22 13:32:44,864 DEBUG Engine.jmeter.JavaVM] Trying JavaVM: ['java', '-version']
+[2023-06-22 13:32:44,864 DEBUG root] Executing shell: ['java', '-version'] at .
+[2023-06-22 13:32:44,918 DEBUG Engine.jmeter.JavaVM] JavaVM output: java version "1.8.0_371"
+Java(TM) SE Runtime Environment (build 1.8.0_371-b11)
+Java HotSpot(TM) Client VM (build 25.371-b11, mixed mode)
+
+[2023-06-22 13:32:44,918 DEBUG Engine.jmeter.TclLibrary] Checking if TCL_LIBRARY variable is present in environment
+[2023-06-22 13:32:44,918 DEBUG Engine.jmeter.TclLibrary] TCL_LIBRARY environment variable is not present
+[2023-06-22 13:32:44,918 DEBUG Engine.jmeter.TclLibrary] Tcl directory was found: C:\Users\Holacons\AppData\Local\Programs\Python\Python311\tcl\tcl8.6
+[2023-06-22 13:32:44,918 DEBUG Engine.jmeter.TclLibrary] Setting environment TCL_LIBRARY=C:\Users\Holacons\AppData\Local\Programs\Python\Python311\tcl\tcl8.6
+[2023-06-22 13:32:44,918 DEBUG Engine.jmeter.TclLibrary] Checking if TCL_LIBRARY variable is present in environment
+[2023-06-22 13:32:44,918 DEBUG Engine.jmeter.TclLibrary] TCL_LIBRARY environment variable is present
+[2023-06-22 13:32:44,918 DEBUG Engine.jmeter.JMeter] Trying JMeter..
+[2023-06-22 13:32:44,918 DEBUG root] Executing shell: ['C:\\Users\\Holacons\\.bzt\\jmeter-taurus\\5.4.3\\bin\\jmeter.bat', '-j', 'C:\\Users\\Holacons\\AppData\\Local\\Temp\\jmeterk2gaujw4log', '--version'] at .
+[2023-06-22 13:32:45,487 DEBUG Engine.jmeter.JMeter] JMeter check:     _    ____   _    ____ _   _ _____       _ __  __ _____ _____ _____ ____
+   / \  |  _ \ / \  / ___| | | | ____|     | |  \/  | ____|_   _| ____|  _ \
+  / _ \ | |_) / _ \| |   | |_| |  _|    _  | | |\/| |  _|   | | |  _| | |_) |
+ / ___ \|  __/ ___ \ |___|  _  | |___  | |_| | |  | | |___  | | | |___|  _ <
+/_/   \_\_| /_/   \_\____|_| |_|_____|  \___/|_|  |_|_____| |_| |_____|_| \_\ 5.4.3
+
+Copyright (c) 1999-2021 The Apache Software Foundation
+
+ / 
+[2023-06-22 13:32:45,487 DEBUG Engine] New artifact filename: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\kpi.jtl
+[2023-06-22 13:32:45,487 DEBUG Engine] New artifact filename: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\error.jtl
+[2023-06-22 13:32:45,487 DEBUG Engine.jmeter.LoadSettingsProcessor] Load: LoadSpec(concurrency=None, throughput=None, ramp_up=None, hold=0, iterations=1, duration=None, steps=None)
+[2023-06-22 13:32:45,487 DEBUG Engine.jmeter.LoadSettingsProcessor] Thread group detection: duration not found, regular ThreadGroup will be used
+[2023-06-22 13:32:45,487 DEBUG Engine.jmeter.LoadSettingsProcessor] No iterations/concurrency/duration found, thread group modification is skipped
+[2023-06-22 13:32:45,487 DEBUG JMX] Saving JMX to: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\modified_PokemonApi.jmx
+[2023-06-22 13:32:45,487 DEBUG root] Executing shell: ['C:\\Users\\Holacons\\.bzt\\jmeter-taurus\\5.4.3\\bin\\PluginsManagerCMD.bat', 'install-for-jmx', 'C:\\Users\\Holacons\\source\\VuelingQA\\jMeter\\pokemonApi\\modified_PokemonApi.jmx'] at .
+[2023-06-22 13:32:47,741 DEBUG Engine.jmeter.JMeter] Try to detect plugins for C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\modified_PokemonApi.jmx
+2023-06-22 13:32:45,958 INFO o.j.r.PluginManagerCMD: Command is: install-for-jmx
+2023-06-22 13:32:46,243 INFO o.j.r.JARSourceHTTP: Found cached repo
+2023-06-22 13:32:46,401 INFO o.j.r.PluginManager: Plugins Status: [jpgc-functions=2.2, jpgc-casutg=2.10, jpgc-dummy=0.4, jpgc-ffw=2.0, jpgc-fifo=0.2, jpgc-json=2.7, jpgc-prmctl=0.4, jpgc-perfmon=2.1, jpgc-plugins-manager=1.7, jpgc-tst=2.5, jmeter-core=5.4.3, jmeter-ftp=5.4.3, jmeter-http=5.4.3, jmeter-jdbc=5.4.3, jmeter-jms=5.4.3, jmeter-junit=5.4.3, jmeter-java=5.4.3, jmeter-ldap=5.4.3, jmeter-mail=5.4.3, jmeter-mongodb=5.4.3, jmeter-native=5.4.3, jmeter-tcp=5.4.3, jmeter-components=5.4.3]
+2023-06-22 13:32:46,401 INFO o.j.r.PluginManagerCMD: Params line is: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\modified_PokemonApi.jmx
+2023-06-22 13:32:46,559 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2023-06-22 13:32:46,559 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2023-06-22 13:32:46,559 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2023-06-22 13:32:46,591 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-22 13:32:46,591 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-22 13:32:46,591 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-22 13:32:46,591 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-22 13:32:46,591 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2023-06-22 13:32:46,591 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2023-06-22 13:32:46,646 INFO o.j.r.PluginManager: Finishing without changes
+
+
+[2023-06-22 13:32:47,741 DEBUG Engine] New artifact filename: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\jmeter.out
+[2023-06-22 13:32:47,741 DEBUG Engine] New artifact filename: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\jmeter.err
+[2023-06-22 13:32:47,741 DEBUG Engine] Module config: final-stats {'class': 'bzt.modules.reporting.FinalStatus'}
+[2023-06-22 13:32:47,741 DEBUG root] Importing module: bzt.modules.reporting
+[2023-06-22 13:32:47,848 DEBUG root] Loading class: 'FinalStatus' from <module 'bzt.modules.reporting' from 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\bzt\\modules\\reporting.py'>
+[2023-06-22 13:32:47,848 DEBUG Engine] Module config: console {'class': 'bzt.modules.console.ConsoleStatusReporter'}
+[2023-06-22 13:32:47,848 DEBUG root] Importing module: bzt.modules.console
+[2023-06-22 13:32:47,848 DEBUG root] Loading class: 'ConsoleStatusReporter' from <module 'bzt.modules.console' from 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\bzt\\modules\\console.py'>
+[2023-06-22 13:32:47,848 DEBUG Engine] Module config: blazemeter {'class': 'bzt.modules.blazemeter.BlazeMeterUploader'}
+[2023-06-22 13:32:47,848 DEBUG root] Importing module: bzt.modules.blazemeter
+[2023-06-22 13:32:47,848 DEBUG root] Loading class: 'BlazeMeterUploader' from <module 'bzt.modules.blazemeter' from 'C:\\Users\\Holacons\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\bzt\\modules\\blazemeter\\__init__.py'>
+[2023-06-22 13:32:47,848 DEBUG Engine.console] Can't use 'console' screen, trying 'gui'
+[2023-06-22 13:32:47,848 WARNING Engine.blazemeter] No BlazeMeter API key provided, will upload anonymously
+[2023-06-22 13:32:47,848 DEBUG Engine.blazemeter] Installing http client
+[2023-06-22 13:32:47,848 DEBUG User] Request: GET https://a.blazemeter.com/api/v4/web/version None
+[2023-06-22 13:32:47,848 DEBUG HTTPClient] Making HTTP request GET https://a.blazemeter.com/api/v4/web/version
+[2023-06-22 13:32:47,848 DEBUG urllib3.connectionpool] Starting new HTTPS connection (1): a.blazemeter.com:443
+[2023-06-22 13:32:48,306 DEBUG urllib3.connectionpool] https://a.blazemeter.com:443 "GET /api/v4/web/version HTTP/1.1" 200 261
+[2023-06-22 13:32:48,321 DEBUG User] Response [200]: {
+    "api_version": 4,
+    "error": null,
+    "result": "BACKEND-CI/release-2023-06-06 8 release-2023-06-06 3991cf08b2a851f4d47146cea6e26698294e3ba0 Thu Jun 22 10:46:51 2023 +0300 3991cf08b2a851f4d47146cea6e26698294e3ba0\n",
+    "request_id": "649431603f2
+[2023-06-22 13:32:48,321 INFO Engine.blazemeter] Sending of engine metrics to happysocks is disabled. modules.blazemeter.happysocks-address setting was not provided
+[2023-06-22 13:32:48,321 DEBUG Engine.Configuration] Dumping YAML config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective.yml
+[2023-06-22 13:32:48,337 DEBUG Engine.Configuration] Dumping JSON config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective.json
+[2023-06-22 13:32:48,337 INFO Engine] Starting...
+[2023-06-22 13:32:48,337 DEBUG Engine] Startup <bzt.modules.monitoring.Monitoring object at 0x0000019C95533CD0>
+[2023-06-22 13:32:48,337 DEBUG Engine] Startup <bzt.modules.shellexec.ShellExecutor object at 0x0000019CABF3A150>
+[2023-06-22 13:32:48,337 DEBUG Engine] Startup <bzt.modules.aggregator.ConsolidatingAggregator object at 0x0000019CABA48110>
+[2023-06-22 13:32:48,337 DEBUG Engine] Startup <bzt.modules.reporting.FinalStatus object at 0x0000019C9550EF10>
+[2023-06-22 13:32:48,337 DEBUG Engine] Startup <bzt.modules.console.ConsoleStatusReporter object at 0x0000019CABFDD2D0>
+[2023-06-22 13:32:48,337 INFO Engine.console] Waiting for results...
+[2023-06-22 13:32:48,337 DEBUG Engine] Startup <bzt.modules.reporting.FinalStatus object at 0x0000019CAD465C90>
+[2023-06-22 13:32:48,337 DEBUG Engine] Startup <bzt.modules.blazemeter.blazemeter_reporter.BlazeMeterUploader object at 0x0000019CAD465D90>
+[2023-06-22 13:32:48,337 INFO Engine.blazemeter] Initiating data feeding...
+[2023-06-22 13:32:48,337 DEBUG User] Request: POST https://a.blazemeter.com/api/v4/sessions None
+[2023-06-22 13:32:48,337 DEBUG HTTPClient] Making HTTP request POST https://a.blazemeter.com/api/v4/sessions
+[2023-06-22 13:32:48,651 DEBUG urllib3.connectionpool] https://a.blazemeter.com:443 "POST /api/v4/sessions HTTP/1.1" 201 3967
+[2023-06-22 13:32:48,653 DEBUG User] Response [201]: {
+    "api_version": 4,
+    "error": null,
+    "result": {
+        "session": {
+            "id": "r-ext-6494316068782373520926",
+            "name": "external",
+            "userId": 386483,
+            "publicToken": "6nvAcCSWupWQ2y35XS2TNshI0rZwdpjjjwWB
+[2023-06-22 13:32:48,655 INFO Engine.blazemeter] Started data feeding: https://a.blazemeter.com/app/?public-token=6nvAcCSWupWQ2y35XS2TNshI0rZwdpjjjwWB9UFbsvdNAPQdAN#reports/r-ext-6494316068782373520926/summary
+[2023-06-22 13:32:48,708 DEBUG Engine] Startup <bzt.modules.provisioning.Local object at 0x0000019CABA9BB50>
+[2023-06-22 13:32:48,708 DEBUG Engine.local] Delay setup for jmeter/smoke: 0(start-at) + 0(delay) = 0
+[2023-06-22 13:32:48,724 DEBUG Engine.Configuration] Dumping YAML config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective.yml
+[2023-06-22 13:32:48,724 DEBUG Engine.Configuration] Dumping JSON config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective.json
+[2023-06-22 13:32:48,724 DEBUG root] Leveling down log file verbosity to INFO, use -v option to have DEBUG messages enabled
+[2023-06-22 13:32:48,724 DEBUG root] Leveled up log file verbosity
+[2023-06-22 13:32:48,724 DEBUG Engine] New artifact filename: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\GRACEFUL
+[2023-06-22 13:32:48,724 DEBUG root] Executing shell: ['C:\\Users\\Holacons\\.bzt\\jmeter-taurus\\5.4.3\\bin\\jmeter.bat', '-t', 'C:\\Users\\Holacons\\source\\VuelingQA\\jMeter\\pokemonApi\\modified_PokemonApi.jmx', '-j', 'C:\\Users\\Holacons\\source\\VuelingQA\\jMeter\\pokemonApi\\artifacts_tmp\\jmeter.log', '-q', 'C:\\Users\\Holacons\\source\\VuelingQA\\jMeter\\pokemonApi\\artifacts_tmp\\jmeter-bzt.properties', '-n'] at C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi
+[2023-06-22 13:32:48,736 DEBUG Engine.local] Starting execution: jmeter/smoke, rest of available slots: 9223372036854775806
+[2023-06-22 13:32:48,736 DEBUG root] Leveling down log file verbosity to INFO, use -v option to have DEBUG messages enabled
+[2023-06-22 13:32:48,968 INFO Engine.console] Did not mute console logging
+[2023-06-22 13:32:49,055 INFO Engine.console] Waiting for finish...
+[2023-06-22 13:32:51,312 WARNING Engine] Failed to check for updates, server returned 5xx.
+[2023-06-22 13:32:52,513 INFO Engine.jmeter.JTLReader] Changed data analysis delay to 4s
+[2023-06-22 13:32:58,516 INFO Engine.jmeter.JTLReader] Changed data analysis delay to 2s
+[2023-06-22 13:33:21,403 WARNING Engine] Please wait for graceful shutdown...
+[2023-06-22 13:33:21,403 DEBUG root] Leveled up log file verbosity
+[2023-06-22 13:33:21,403 INFO Engine] Shutting down...
+[2023-06-22 13:33:21,403 DEBUG Engine] Current stop reason: None
+[2023-06-22 13:33:21,403 DEBUG Engine.local] Shutdown jmeter/smoke
+[2023-06-22 13:33:21,428 DEBUG Engine.console] No logger_handler or orig_stream was detected
+[2023-06-22 13:33:21,430 DEBUG Engine.Configuration] Dumping YAML config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective.yml
+[2023-06-22 13:33:21,440 DEBUG Engine.Configuration] Dumping JSON config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective.json
+[2023-06-22 13:33:21,441 INFO Engine] Post-processing...
+[2023-06-22 13:33:21,441 DEBUG Engine.local] Post-process jmeter/smoke
+[2023-06-22 13:33:21,441 DEBUG Engine] Add existing artifact (move=True): C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\modified_PokemonApi.jmx
+[2023-06-22 13:33:21,442 DEBUG Engine] Moving C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\modified_PokemonApi.jmx to C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\modified_PokemonApi.jmx
+[2023-06-22 13:33:21,443 DEBUG Engine.jmeter.JTLReader] Buffer len: 2; Known errors count: 0
+[2023-06-22 13:33:21,443 DEBUG Engine.jmeter.JTLReader] Aggregating: 1687433598, 2 in buffer
+[2023-06-22 13:33:21,449 DEBUG Engine.jmeter.JTLReader] Aggregating: 1687433599, 1 in buffer
+[2023-06-22 13:33:21,453 DEBUG Engine.jmeter.JTLReader] Buffer len: 0; Known errors count: 0
+[2023-06-22 13:33:21,453 DEBUG Engine.consolidator] Consolidator buffer[4]: dict_keys([1687433596, 1687433597, 1687433598, 1687433599])
+[2023-06-22 13:33:21,453 DEBUG Engine.consolidator] Merging into 1687433596
+[2023-06-22 13:33:21,453 DEBUG Engine.consolidator] Bypassing consolidation because of single result
+[2023-06-22 13:33:21,462 DEBUG Engine.consolidator] Processed datapoint: 1687433596/ConsolidatingAggregator@1772406210832
+[2023-06-22 13:33:21,462 DEBUG Engine.consolidator] Merging into 1687433597
+[2023-06-22 13:33:21,462 DEBUG Engine.consolidator] Bypassing consolidation because of single result
+[2023-06-22 13:33:21,469 DEBUG Engine.consolidator] Processed datapoint: 1687433597/ConsolidatingAggregator@1772406210832
+[2023-06-22 13:33:21,469 DEBUG Engine.consolidator] Merging into 1687433598
+[2023-06-22 13:33:21,469 DEBUG Engine.consolidator] Bypassing consolidation because of single result
+[2023-06-22 13:33:21,478 DEBUG Engine.consolidator] Processed datapoint: 1687433598/ConsolidatingAggregator@1772406210832
+[2023-06-22 13:33:21,479 DEBUG Engine.consolidator] Merging into 1687433599
+[2023-06-22 13:33:21,479 DEBUG Engine.consolidator] Bypassing consolidation because of single result
+[2023-06-22 13:33:21,486 DEBUG Engine.consolidator] Processed datapoint: 1687433599/ConsolidatingAggregator@1772406210832
+[2023-06-22 13:33:21,486 INFO Engine.final-stats] Test duration: 0:00:33
+[2023-06-22 13:33:21,486 INFO Engine.final-stats] Samples count: 1879, 0.00% failures
+[2023-06-22 13:33:21,487 INFO Engine.final-stats] Average times: total 0.079, latency 0.055, connect 0.005
+[2023-06-22 13:33:21,488 INFO Engine.final-stats] Percentiles:
++---------------+---------------+
+| Percentile, % | Resp. Time, s |
++---------------+---------------+
+|           0.0 |          0.02 |
+|          50.0 |         0.052 |
+|          90.0 |          0.14 |
+|          95.0 |         0.184 |
+|          99.0 |         0.278 |
+|          99.9 |         2.184 |
+|         100.0 |         2.184 |
++---------------+---------------+
+[2023-06-22 13:33:21,488 INFO Engine.final-stats] Request label stats:
++----------------------------------------+--------+---------+--------+-------+
+| label                                  | status |    succ | avg_rt | error |
++----------------------------------------+--------+---------+--------+-------+
+| get pokemon : ditto                    |   OK   | 100.00% |  0.071 |       |
+| get pokemon : eevee                    |   OK   | 100.00% |  0.094 |       |
+| get pokemon : gengar                   |   OK   | 100.00% |  0.147 |       |
+| get pokemon : minccino                 |   OK   | 100.00% |  0.090 |       |
+| get pokemon : vulpix                   |   OK   | 100.00% |  0.115 |       |
+| get pokemons by ability : adaptability |   OK   | 100.00% |  0.050 |       |
+| get pokemons by ability : anticipation |   OK   | 100.00% |  0.048 |       |
+| get pokemons by ability : cursed-body  |   OK   | 100.00% |  0.054 |       |
+| get pokemons by ability : cute-charm   |   OK   | 100.00% |  0.046 |       |
+| get pokemons by ability : drought      |   OK   | 100.00% |  0.063 |       |
+| get pokemons by ability : flash-fire   |   OK   | 100.00% |  0.047 |       |
+| get pokemons by ability : imposter     |   OK   | 100.00% |  0.048 |       |
+| get pokemons by ability : limber       |   OK   | 100.00% |  0.050 |       |
+| get pokemons by ability : run-away     |   OK   | 100.00% |  0.076 |       |
+| get pokemons by ability : skill-link   |   OK   | 100.00% |  0.069 |       |
+| get pokemons by ability : technician   |   OK   | 100.00% |  0.053 |       |
++----------------------------------------+--------+---------+--------+-------+
+[2023-06-22 13:33:21,489 DEBUG Engine.console] No logger_handler or orig_stream was detected
+[2023-06-22 13:33:21,489 INFO Engine.final-stats] Test duration: 0:00:33
+[2023-06-22 13:33:21,490 INFO Engine.final-stats] Samples count: 1879, 0.00% failures
+[2023-06-22 13:33:21,490 INFO Engine.final-stats] Average times: total 0.079, latency 0.055, connect 0.005
+[2023-06-22 13:33:21,492 INFO Engine.final-stats] Percentiles:
++---------------+---------------+
+| Percentile, % | Resp. Time, s |
++---------------+---------------+
+|           0.0 |          0.02 |
+|          50.0 |         0.052 |
+|          90.0 |          0.14 |
+|          95.0 |         0.184 |
+|          99.0 |         0.278 |
+|          99.9 |         2.184 |
+|         100.0 |         2.184 |
++---------------+---------------+
+[2023-06-22 13:33:21,493 INFO Engine.final-stats] Request label stats:
++----------------------------------------+--------+---------+--------+-------+
+| label                                  | status |    succ | avg_rt | error |
++----------------------------------------+--------+---------+--------+-------+
+| get pokemon : ditto                    |   OK   | 100.00% |  0.071 |       |
+| get pokemon : eevee                    |   OK   | 100.00% |  0.094 |       |
+| get pokemon : gengar                   |   OK   | 100.00% |  0.147 |       |
+| get pokemon : minccino                 |   OK   | 100.00% |  0.090 |       |
+| get pokemon : vulpix                   |   OK   | 100.00% |  0.115 |       |
+| get pokemons by ability : adaptability |   OK   | 100.00% |  0.050 |       |
+| get pokemons by ability : anticipation |   OK   | 100.00% |  0.048 |       |
+| get pokemons by ability : cursed-body  |   OK   | 100.00% |  0.054 |       |
+| get pokemons by ability : cute-charm   |   OK   | 100.00% |  0.046 |       |
+| get pokemons by ability : drought      |   OK   | 100.00% |  0.063 |       |
+| get pokemons by ability : flash-fire   |   OK   | 100.00% |  0.047 |       |
+| get pokemons by ability : imposter     |   OK   | 100.00% |  0.048 |       |
+| get pokemons by ability : limber       |   OK   | 100.00% |  0.050 |       |
+| get pokemons by ability : run-away     |   OK   | 100.00% |  0.076 |       |
+| get pokemons by ability : skill-link   |   OK   | 100.00% |  0.069 |       |
+| get pokemons by ability : technician   |   OK   | 100.00% |  0.053 |       |
++----------------------------------------+--------+---------+--------+-------+
+[2023-06-22 13:33:21,493 DEBUG Engine.blazemeter] KPI bulk buffer len in post-proc: 4
+[2023-06-22 13:33:21,493 INFO Engine.blazemeter] Sending remaining KPI data to server...
+[2023-06-22 13:33:21,539 DEBUG User] Request: POST https://data.blazemeter.com/submit.php?session_id=r-ext-6494316068782373520926&signature=ci1leHQtNjQ5NDMxNjA2ODc4MjM3MzUyMDkyNjoxNjg4NjQzMTY4OjIzNjg4ZDc1ODJiMzhkZGViYTZiNzJiYTVkMzYyZDFmZmVjNTJhYzk1NjYwY2U0MTViYTE0ZTBjYjBiZDIyNjdkZGFiZDg0Zjc2NzU5NTQyZGQzODJlMjBlNWQ2YWNmNDgxOTczNDg1NzY0YjQ1NTkyMzdkNzQ1MGE4ODgxODA4&test_id=12760353&user_id=386483&pq=0&target=labels_bulk&update=1 b'{\n "labels": [\n  {\n   "n": 1879,\n   "name": "ALL",\n   "interval": 1,\n   "intervals": [\n    {\n     "ec": 0,\n     "ts": 1687433596,\n     "na": 5,\n     "n": 61,\n     "failed": 0,\n     "rc": [\n      {\n       "n": 61,\n       "f": [],\n       "rc": "200"\n      }\n'
+[2023-06-22 13:33:21,539 DEBUG HTTPClient] Making HTTP request POST https://data.blazemeter.com/submit.php?session_id=r-ext-6494316068782373520926&signature=ci1leHQtNjQ5NDMxNjA2ODc4MjM3MzUyMDkyNjoxNjg4NjQzMTY4OjIzNjg4ZDc1ODJiMzhkZGViYTZiNzJiYTVkMzYyZDFmZmVjNTJhYzk1NjYwY2U0MTViYTE0ZTBjYjBiZDIyNjdkZGFiZDg0Zjc2NzU5NTQyZGQzODJlMjBlNWQ2YWNmNDgxOTczNDg1NzY0YjQ1NTkyMzdkNzQ1MGE4ODgxODA4&test_id=12760353&user_id=386483&pq=0&target=labels_bulk&update=1
+[2023-06-22 13:33:21,896 DEBUG urllib3.connectionpool] https://data.blazemeter.com:443 "POST /submit.php?session_id=r-ext-6494316068782373520926&signature=ci1leHQtNjQ5NDMxNjA2ODc4MjM3MzUyMDkyNjoxNjg4NjQzMTY4OjIzNjg4ZDc1ODJiMzhkZGViYTZiNzJiYTVkMzYyZDFmZmVjNTJhYzk1NjYwY2U0MTViYTE0ZTBjYjBiZDIyNjdkZGFiZDg0Zjc2NzU5NTQyZGQzODJlMjBlNWQ2YWNmNDgxOTczNDg1NzY0YjQ1NTkyMzdkNzQ1MGE4ODgxODA4&test_id=12760353&user_id=386483&pq=0&target=labels_bulk&update=1 HTTP/1.1" 200 149
+[2023-06-22 13:33:21,896 DEBUG User] Response [200]: {"api_version":2,"error":null,"result":{"session":{"_id":"r-ext-6494316068782373520926","name":"external","statusCode":100,"status":"INITIALIZING"}}}
+[2023-06-22 13:33:21,907 DEBUG User] Request: POST https://data.blazemeter.com/api/v4/image/r-ext-6494316068782373520926/files?signature=ci1leHQtNjQ5NDMxNjA2ODc4MjM3MzUyMDkyNjoxNjg4NjQzMTY4OjIzNjg4ZDc1ODJiMzhkZGViYTZiNzJiYTVkMzYyZDFmZmVjNTJhYzk1NjYwY2U0MTViYTE0ZTBjYjBiZDIyNjdkZGFiZDg0Zjc2NzU5NTQyZGQzODJlMjBlNWQ2YWNmNDgxOTczNDg1NzY0YjQ1NTkyMzdkNzQ1MGE4ODgxODA4&masterId=68489390 b'--===============3522951983394099769==\r\nContent-Disposition: file; name="file"; filename="r-ext-6494316068782373520926-0-c.monitoring.json"\r\nContent-Type: application/json\r\n\r\n{\n "reportInfo": {\n  "sessionId": "r-ext-6494316068782373520926",\n  "timestamp": '
+[2023-06-22 13:33:21,907 DEBUG HTTPClient] Making HTTP request POST https://data.blazemeter.com/api/v4/image/r-ext-6494316068782373520926/files?signature=ci1leHQtNjQ5NDMxNjA2ODc4MjM3MzUyMDkyNjoxNjg4NjQzMTY4OjIzNjg4ZDc1ODJiMzhkZGViYTZiNzJiYTVkMzYyZDFmZmVjNTJhYzk1NjYwY2U0MTViYTE0ZTBjYjBiZDIyNjdkZGFiZDg0Zjc2NzU5NTQyZGQzODJlMjBlNWQ2YWNmNDgxOTczNDg1NzY0YjQ1NTkyMzdkNzQ1MGE4ODgxODA4&masterId=68489390
+[2023-06-22 13:33:22,404 DEBUG urllib3.connectionpool] https://data.blazemeter.com:443 "POST /api/v4/image/r-ext-6494316068782373520926/files?signature=ci1leHQtNjQ5NDMxNjA2ODc4MjM3MzUyMDkyNjoxNjg4NjQzMTY4OjIzNjg4ZDc1ODJiMzhkZGViYTZiNzJiYTVkMzYyZDFmZmVjNTJhYzk1NjYwY2U0MTViYTE0ZTBjYjBiZDIyNjdkZGFiZDg0Zjc2NzU5NTQyZGQzODJlMjBlNWQ2YWNmNDgxOTczNDg1NzY0YjQ1NTkyMzdkNzQ1MGE4ODgxODA4&masterId=68489390 HTTP/1.1" 200 160
+[2023-06-22 13:33:22,404 DEBUG User] Response [200]: {
+    "api_version": 4,
+    "error": null,
+    "result": [
+        "r-ext-6494316068782373520926-0-c.monitoring.json"
+    ],
+    "request_id": "64943181ec765"
+}
+[2023-06-22 13:33:22,404 DEBUG Engine.blazemeter] Set last check time to: 1687433567.8481445
+[2023-06-22 13:33:22,404 INFO Engine.blazemeter] Ending data feeding...
+[2023-06-22 13:33:22,404 DEBUG User] Request: POST https://a.blazemeter.com/api/v4/sessions/r-ext-6494316068782373520926/terminate-external {
+ "signature": "ci1leHQtNjQ5NDMxNjA2ODc4MjM3MzUyMDkyNjoxNjg4NjQzMTY4OjIzNjg4ZDc1ODJiMzhkZGViYTZiNzJiYTVkMzYyZDFmZmVjNTJhYzk1NjYwY2U0MTViYTE0ZTBjYjBiZDIyNjdkZGFiZDg0Zjc2NzU5NTQyZGQzODJlMjBlNWQ2YWNmNDgxOTczNDg1NzY0YjQ1NTkyMzdkNzQ1MGE4ODgxODA4",
+ "testId": 1
+[2023-06-22 13:33:22,404 DEBUG HTTPClient] Making HTTP request POST https://a.blazemeter.com/api/v4/sessions/r-ext-6494316068782373520926/terminate-external
+[2023-06-22 13:33:22,578 DEBUG urllib3.connectionpool] https://a.blazemeter.com:443 "POST /api/v4/sessions/r-ext-6494316068782373520926/terminate-external HTTP/1.1" 200 6226
+[2023-06-22 13:33:22,578 DEBUG User] Response [200]: {
+    "api_version": 4,
+    "error": null,
+    "result": {
+        "success": "Terminating",
+        "session": {
+            "id": "r-ext-6494316068782373520926",
+            "name": "external",
+            "userId": 386483,
+            "publicToken": "6n
+[2023-06-22 13:33:22,578 INFO Engine.blazemeter] Online report link: https://a.blazemeter.com/app/?public-token=6nvAcCSWupWQ2y35XS2TNshI0rZwdpjjjwWB9UFbsvdNAPQdAN#reports/r-ext-6494316068782373520926/summary
+[2023-06-22 13:33:22,578 INFO Engine.shellexec.Task] Starting shell command: mkdir C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\HTML
+[2023-06-22 13:33:22,578 DEBUG root] Executing shell: mkdir C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\HTML at C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi
+[2023-06-22 13:33:22,602 DEBUG Engine.shellexec.Task] Task was finished with exit code 0: mkdir C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\HTML
+[2023-06-22 13:33:22,602 INFO Engine.shellexec.Task] Starting shell command: jmeter -g C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\Results.csv -o C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\HTML
+[2023-06-22 13:33:22,603 DEBUG root] Executing shell: jmeter -g C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\Results.csv -o C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\HTML at C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi
+[2023-06-22 13:33:27,057 DEBUG Engine.shellexec.Task] Task was finished with exit code 0: jmeter -g C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\Results.csv -o C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\HTML
+[2023-06-22 13:33:27,057 DEBUG Engine.Configuration] Dumping YAML config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective.yml
+[2023-06-22 13:33:27,073 DEBUG Engine.Configuration] Dumping JSON config into C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\effective.json
+[2023-06-22 13:33:27,073 INFO root] Artifacts dir: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp
+[2023-06-22 13:33:27,073 INFO root] Done performing with code: 0
+[2023-06-22 13:33:27,073 DEBUG root] Closing log handler: C:\Users\Holacons\source\VuelingQA\jMeter\pokemonApi\artifacts_tmp\bzt.log

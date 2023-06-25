@@ -1,0 +1,54 @@
+---
+settings:
+  artifacts-dir: C:\Users\Holacons\source\VuelingQA\jMeter\Pokemon\poke.api\load\tmp
+  env:
+    BASE_DIR: C:\Users\Holacons\source\VuelingQA\jMeter\Pokemon\poke.api
+
+services:
+- module: shellexec
+  post-process:
+      - mkdir ${BASE_DIR}\load\HTML
+      - jmeter -g ${BASE_DIR}\load\Results.csv -o ${BASE_DIR}\load\HTML
+
+execution:
+- executor: jmeter
+  scenario: smoke
+
+scenarios:
+  smoke:
+    script: ${BASE_DIR}\load\testScript.jmx
+    variables:
+      Url: pokeapi.co
+      Protocol: https
+      ResultsPath: ${BASE_DIR}\load\Results.csv
+      ErrorsPath: ${BASE_DIR}\load\Errors.csv
+      TestDuration: 30
+      RampUp: 0
+      Threads: 5
+      Rpm: 0
+  load:
+    script: ${BASE_DIR}\load\testScript.jmx
+    variables:
+      Url: pokeapi.co
+      Protocol: https
+      ResultsPath: ${BASE_DIR}\load\Results.csv
+      ErrorsPath: ${BASE_DIR}\load\Errors.csv
+      TestDuration: 30
+      RampUp: 0
+      Threads: 5
+      Rpm: 0
+
+reporting:
+- module: final-stats
+  summary: true
+  percentiles: true
+  failed-labels: false
+  test-duration: true
+- module: blazemeter
+  report-name: Taurus test report - Poke Api
+  test: Taurus test
+  project: Taurus test project
+
+testName:
+
+baseUrl:

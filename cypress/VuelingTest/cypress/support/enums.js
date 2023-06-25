@@ -1,5 +1,5 @@
 export const paxEnum = {
-    Adult: "adults",
-    Child: "children",
-    Infant: "infants"
+    Adult: "ADT",
+    Child: "CHD",
+    Infant: "INFANT"
 }

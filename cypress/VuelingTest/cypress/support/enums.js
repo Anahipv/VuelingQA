@@ -3,3 +3,10 @@ export const paxEnum = {
     Child: "CHD",
     Infant: "INFANT"
 }
+
+export const fares = {
+    Optima : "optima",
+    TimeFlex : "timeFlex",
+    Family : "family",
+    Basic : "basic"
+}

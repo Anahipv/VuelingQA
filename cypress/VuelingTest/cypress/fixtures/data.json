@@ -1,8 +1,133 @@
-{
+[{
 	"origin" : "BCN",
 	"destination" : "ATH",
 	"month" : "agosto",
 	"ADT" : "2",
 	"CHD" : "0",
-	"INF" : "1"
+	"INF" : "1",
+	"paxTotal" : 2,
+	"airline" : "",
+	"fare" : "basic",
+	"infoPax" : [
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "",
+			"INF" : {
+				"name" : "aa",
+				"lastName" : "bb",
+				"birthdate" : "12/12/2022"
+			}
+		},
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "",
+			"INF" : ""
+		}
+	],
+	"contact" : {
+		"country" : "ES",
+		"phone" : "666677777",
+		"email" : "aabb@gmail.com"
+	}
+},
+{
+	"origin" : "BCN",
+	"destination" : "MAD",
+	"month" : "agosto",
+	"ADT" : "4",
+	"CHD" : "2",
+	"INF" : "2",
+	"paxTotal" : 6,
+	"airline" : "VY",
+	"fare" : "timeFlex",
+	"infoPax" : [
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "",
+			"INF" : {
+				"name" : "aa",
+				"lastName" : "bb",
+				"birthdate" : "12/12/2022"
+			}
+		},
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "",
+			"INF" : {
+				"name" : "aa",
+				"lastName" : "bb",
+				"birthdate" : "12/12/2022"
+			}
+		},
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "",
+			"INF" : ""
+		},
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "",
+			"INF" : ""
+		},
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "12/12/2015",
+			"INF" : ""
+		},
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "12/12/2015",
+			"INF" : ""
+		}
+	],
+	"contact" : {
+		"country" : "ES",
+		"phone" : "666677777",
+		"email" : "aabb@gmail.com"
+	}
+},
+{
+	"origin" : "BCN",
+	"destination" : "MAD",
+	"RT" : {"ida" : 4, "vuelta" : 11},
+	"ADT" : "2",
+	"CHD" : "1",
+	"INF" : "0",
+	"paxTotal" : 3,
+	"airline" : "",
+	"fare" : "optima",
+	"infoPax" : [
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "",
+			"INF" : ""
+		},
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "",
+			"INF" : ""
+		},
+		{
+			"name" : "aa",
+			"lastName" : "bb",
+			"birthdate" : "12/12/2015",
+			"INF" : ""
+		}
+	],
+	"contact" : {
+		"country" : "ES",
+		"phone" : "666677777",
+		"email" : "aabb@gmail.com"
+	}
 }
+]
